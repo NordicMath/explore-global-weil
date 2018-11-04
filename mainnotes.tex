@@ -4,65 +4,23 @@
 
 \begin{document}
 
+\title{Working notes on $m$-functions}
+\maketitle
+
 \tableofcontents
 
 \section{Intro and summary}
 
+We aim to collect all results obtained on $m$-functions and the various "helper" functions, including $h$, $c$, $\Psi$ and $g$.
+
+An important part of this project includes the code base and the many different ways of plotting $m$ and the other functions. The plots and animations are collected in a Google Drive folder, while much of the code currently (Nov 2018) exists on local machines.
 
 
 
+\subsection{Ideas and work in progress}
 
+Right now (Nov 4th, 2018) it seems like the snake plot might be the most promising plot method, but we need to refine and test all the plotting technology further, while also doing more work on the theory side, especially on the $g$ function and the global functional equation (GFE).
 
-
-\section{Background on complex analysis}
-
-A hope is that there is a theorem which immediately implies that the number of poles on the unit circle of any $m$-function is finite, and that the number of zeroes on the unit disc is also finite. I (Andreas) am currently reading the book of Gamelin to find out, but we might need to ask on MathOverflow or search elsewhere.
-
-An analytic (or meromorphic) function should be completely determined by its values on the real line, or on the unit circle (or any other curve segment). This means that if we understand for example $h$ on the unit circle, we can in principle reconstruct $h$ on the entire complex plane. BUT I (Andreas) don't know exactly how to do this. One possibility could be to use the Cauchy-Riemann equations, which we record here in their polar coordinate version.
-
-\begin{proposition}
-Assume that $f(z) = u(z) + i v(z) $ is an analytic function with real part $u$ and imaginary part $v$. Then we have
-$$  \frac{\partial u}{\partial r} = \frac{1}{r} \frac{\partial v}{\partial \theta}$$
-and
-$$ \frac{1}{r} \frac{\partial u}{\partial \theta} = - \frac{\partial v}{\partial r} $$
-\end{proposition}
-
-\section{Plotting m-functions}
-
-
-\section{The $h$-function and the $c$-function}
-
-
-\begin{definition}
-  The $m$-function of $z$ associated to an arithmetic $f : \N \to \C$ is defined by the inifite sequence:
-  $$m(z; f) = \sum_{n = 1}^{\infty} f(n) z^{n - 1}$$
-\end{definition}
-
-\begin{definition}
-  We say that $m$ has proper convergence when the sum defining $m(z; f)$ absolutely converges whenever $|z| < 1$. All $m$-functions here have proper convergence unless otherwise stated.
-\end{definition}
-
-\begin{proposition}
-  An $m$-function has proper convergence if and only if there exists an $N$ and a monomial $Bn^d$ such that $|f(n)| \le Bn^d$ for all $n \ge N$.
-\end{proposition}
-
-\begin{proof}
-  The sum is absolutely convergent if and only if all tails of the function absolutely converge. Given an $N$ and a polynomial $P(x)$, look at the following tail:
-  $$\sum_{n = N}^{\infty} |f(n)z^{n - 1}| = \sum_{n = N}^{\infty} |f(n)| |z|^{n - 1} \le \sum_{n = N}^{\infty} Bn^d |z|^{n - 1}$$
-  We apply the Cauchy ratio test, and see that:
-  $$L = \lim_{n \to \infty} \left|\frac{B(n + 1)^d |z|^{n}}{Bn^d |z|^{n - 1}}\right| = \lim_{n \to \infty} |z|\left|\frac{(n + 1)^d}{n^d}\right| = \lim_{n \to \infty} |z|\left|1 + \frac{ 1}{n}\right|^d = |z|$$
-  From this, we see that whenever $|z| < 1$ we have absolute convergence of the $m$-function, which is what we wanted to show. For the other direction... \todo{how?}
-
-\end{proof}
-
-
-\begin{definition}
-For any $m$-function $m(z)$,we define the associated $h$-function as
-$$ h(z) = \frac{m(\frac{1}{z})}{m(z) }  $$
-(which of course makes sense only if the $m$-function is defined outside of the unit circle).
-\end{definition}
-
-Ideas:
 \begin{enumerate}
 \item IF we could understand (e.g. via numerical experiments) how the $h$-function looks for a given $m$-function, then we could maybe use this knowledge to DEFINE $m$ outside the unit circle. This would probably imply the pairing conjecture, and could possibly lead to a direct proof of the global functional equation for the underlying $L$-function, without relying on modular or automorphic forms. The reason for thinking this is that for Dirichlet characters, the pairing conjecture is essentially equivalent to the fact that $\chi$ is a character, which is in turn essentially equivalent to the GFE for the Dirichlet $L$-function.
 \item In all the problems that follow it might be the case that Fourier analysis could help us. A conjecture is that for any $m$-function, the Fourier coefficients of $h(1, \theta)$ are rational numbers (perhaps with a simple formula).
@@ -71,6 +29,20 @@ Ideas:
 \item A good idea (?): Try to plot $\Psi(\theta)$ for different $m$-functions, maybe via the $c$-function as $r$ approaches 1.
 \item Vague idea: Can we use power series inversion (applied to the denominator) to understand $c$ better?
 \end{enumerate}
+
+
+\section{Definitions}
+
+\begin{definition}
+  The $m$-function of $z$ associated to an arithmetic $f : \N \to \C$ is defined by the inifite sequence:
+  $$m(z; f) = \sum_{n = 1}^{\infty} f(n) z^{n - 1}$$
+\end{definition}
+
+\begin{definition}
+For any $m$-function $m(z)$,we define the associated $h$-function as
+$$ h(z) = \frac{m(\frac{1}{z})}{m(z) }  $$
+(which of course makes sense only if the $m$-function is defined outside of the unit circle).
+\end{definition}
 
 \begin{definition}
 For any $m$-function $m(z)$,we define the associated $c$-function as
@@ -92,7 +64,55 @@ $$  \Psi(\theta) = \arg h(1, \theta)   $$
 (we need to decide which branch of $\arg$ we use).
 \end{definition}
 
-Trying to work out what the CR equations say (all of this might be completely wrong for some stupid reason). I think it is true that for the $h$-function, if we write $h = u+ iv$ and restrict attention to what happens on the unit circle, we get
+
+\section{Background on complex analysis}
+
+A hope is that there is a theorem which immediately implies that the number of poles on the unit circle of any $m$-function is finite, and that the number of zeroes on the unit disc is also finite. I (Andreas) am currently reading the book of Gamelin to find out, but we might need to ask on MathOverflow or search elsewhere.
+
+An analytic (or meromorphic) function should be completely determined by its values on the real line, or on the unit circle (or any other curve segment). This means that if we understand for example $h$ on the unit circle, we can in principle reconstruct $h$ on the entire complex plane. BUT I (Andreas) don't know exactly how to do this. One possibility could be to use the Cauchy-Riemann equations, which we record here in their polar coordinate version.
+
+\begin{proposition}
+Assume that $f(z) = u(z) + i v(z) $ is an analytic function with real part $u$ and imaginary part $v$. Then we have
+$$  \frac{\partial u}{\partial r} = \frac{1}{r} \frac{\partial v}{\partial \theta}$$
+and
+$$ \frac{1}{r} \frac{\partial u}{\partial \theta} = - \frac{\partial v}{\partial r} $$
+\end{proposition}
+
+\section{Plotting m-functions}
+
+
+\subsection{Different methods for plotting}
+
+There are many ways of plotting the $m$-function and its auxiliary functions.
+
+\begin{enumerate}
+\item Snake
+\item \ldots (discuss and complete)
+\end{enumerate}
+
+
+\subsection{Convergence and bounds}
+
+\begin{definition}
+  We say that $m$ has proper convergence when the sum defining $m(z; f)$ absolutely converges whenever $|z| < 1$. All $m$-functions here have proper convergence unless otherwise stated.
+\end{definition}
+
+\begin{proposition}
+  An $m$-function has proper convergence if and only if there exists an $N$ and a monomial $Bn^d$ such that $|f(n)| \le Bn^d$ for all $n \ge N$.
+\end{proposition}
+
+\begin{proof}
+  The sum is absolutely convergent if and only if all tails of the function absolutely converge. Given an $N$ and a polynomial $P(x)$, look at the following tail:
+  $$\sum_{n = N}^{\infty} |f(n)z^{n - 1}| = \sum_{n = N}^{\infty} |f(n)| |z|^{n - 1} \le \sum_{n = N}^{\infty} Bn^d |z|^{n - 1}$$
+  We apply the Cauchy ratio test, and see that:
+  $$L = \lim_{n \to \infty} \left|\frac{B(n + 1)^d |z|^{n}}{Bn^d |z|^{n - 1}}\right| = \lim_{n \to \infty} |z|\left|\frac{(n + 1)^d}{n^d}\right| = \lim_{n \to \infty} |z|\left|1 + \frac{ 1}{n}\right|^d = |z|$$
+  From this, we see that whenever $|z| < 1$ we have absolute convergence of the $m$-function, which is what we wanted to show. For the other direction... \todo{how?}
+
+\end{proof}
+
+\section{Results on the $h$-function and the $c$-function}
+
+Let's try to work out what the CR equations say (all of this paragraph might be completely wrong for some stupid reason). I think it is true that for the $h$-function, if we write $h = u+ iv$ and restrict attention to what happens on the unit circle, we get
 $$ u(\theta) = \cos \Psi(\theta) \quad \quad \textrm{and} \quad \quad v(\theta) =  \sin \Psi(\theta) $$
 from which we can determine $\frac{\partial u}{\partial \theta}$ and $\frac{\partial v}{\partial \theta}$. This should (using the chain rule) tell us what happens very near the unit circle as we vary $r$. But I don't see how to get to any differential equations that determine $h$ on the entire complex plane, BUT then again I haven't thought this through thoroughly at all.
 
@@ -101,7 +121,7 @@ from which we can determine $\frac{\partial u}{\partial \theta}$ and $\frac{\par
 
 
 
-\section{Hadamard product and the $g$ function}
+\section{Hadamard factorization and the $g$ function}
 
 Add the relevant theorem here.
 
@@ -124,7 +144,7 @@ Note that this gives a zig-zag function with nice Fourier coefficients.
 The first statement follows immediately by a short computation. For the second statement, we have $h(1, \theta) = -e^{i \theta} = e^{i (\theta + \pi)} $
 \end{proof}
 
-\section{Examples: Dirichlet characters}
+\section{General results for Dirichlet characters}
 
 It will be super-interesting to see what happens with $h$ and $c$ and $\Psi$ for Dirichlet characters.
 
@@ -146,6 +166,25 @@ Expanding by $\chi(-1) z^N $ in the second step, and then using repeatedly that 
 \end{align*}
 and the result follows.
 \end{proof}
+
+Remark: I think the proof also essentially proves the pairing conjecture, but we have to check carefully and write it down. The point is that the reverse polynomial of the numerator of $m$ is obtained from the original numerator just by substituting $1/z$ in place of $z$, and then multiplying by $\chi(-1) z^{N-2}$. But we have to check what happens with cancellation. Note that the Riemann example has just a single pole, so it cannot satisfy the pairing conjecture.
+
+\section{Examples of Dirichlet characters}
+
+Unless otherwise stated, we consider the "Generator 0" given by Sage.
+
+\subsection{Mod 3}
+
+We get $m(z) = \frac{1}{1+z+z^2}$. The real plot on $[-1, 1]$ has minimum $\frac{1}{3}$ for $z=1$, and maximum $\frac{4}{3}$, for $z=-\frac{1}{2}$.
+
+\subsection{Mod 4}
+
+
+
+\subsection{Mod 5}
+
+
+\subsection{Mod 15}
 
 
 \end{document}
