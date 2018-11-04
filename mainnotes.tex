@@ -61,7 +61,7 @@ Ideas:
 \begin{enumerate}
 \item IF we could understand (e.g. via numerical experiments) how the $h$-function looks for a given $m$-function, then we could maybe use this knowledge to DEFINE $m$ outside the unit circle. This would probably imply the pairing conjecture, and could possibly lead to a direct proof of the global functional equation for the underlying $L$-function, without relying on modular or automorphic forms. The reason for thinking this is that for Dirichlet characters, the pairing conjecture is essentially equivalent to the fact that $\chi$ is a character, which is in turn essentially equivalent to the GFE for the Dirichlet $L$-function.
 \item In all the problems that follow it might be the case that Fourier analysis could help us. A conjecture is that for any $m$-function, the Fourier coefficients of $h(1, \theta)$ are rational numbers (perhaps with a simple formula).
-\item Plan: Try to first understand $h(1, \theta)$ via the study of $c(r, \theta)$ as $r$ approaches $1$. Under some reasonable assumptions on $m$ it seems like $c(r, \theta)$ approaches $h(1, \theta)$, using that $m(1/z) \approx m(z)$ near any point on the unit circle where $m$ is continuous. Note that $c$ is defined on the open unit disc (unconditionally) but $c$ is not an analytic function.
+\item Plan: Try to first understand $h(1, \theta)$ via the study of $c(r, \theta)$ as $r$ approaches $1$. Under some reasonable assumptions on $m$ it seems like $c(r, \theta)$ approaches $h(1, \theta)$, using that $m(1/z) \approx m(\bar{z})$ near any point on the unit circle where $m$ is continuous. Note that $c$ is defined on the open unit disc (unconditionally) but $c$ is not an analytic function.
 \item Work first with Dirichlet characters, since in this case we know what the $m$-function is in the entire complex plane. This should also clarify which of our definitions and conjectures require the $m$-function to have real coefficients.
 \item A good idea (?): Try to plot $\Psi(\theta)$ for different $m$-functions, maybe via the $c$-function as $r$ approaches 1.
 \item Vague idea: Can we use power series inversion (applied to the denominator) to understand $c$ better?
@@ -110,10 +110,14 @@ $$ m(z) = \frac{1}{1-z}   $$
 For this $m$-function, we have
 $$h(z) = -z$$
 and
-$$\psi(\theta ) = \theta + \pi \ \pmod {2\pi}$$
+$$\Psi(\theta ) = \theta + \pi \pmod {2\pi}$$
 
 \end{lemma}
 Note that this gives a zig-zag function with nice Fourier coefficients.
+
+\begin{proof}
+The first statement follows immediately by a short computation. For the second statement, we have $h(1, \theta) = -e^{i \theta} = e^{i (\theta + \pi)} $
+\end{proof}
 
 \section{Examples: Dirichlet characters}
 
