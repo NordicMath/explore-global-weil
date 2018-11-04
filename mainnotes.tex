@@ -6,7 +6,12 @@
 
 \tableofcontents
 
-\section{Intro}
+\section{Intro and summary}
+
+
+
+
+
 
 
 \section{Background on complex analysis}
@@ -123,6 +128,24 @@ The first statement follows immediately by a short computation. For the second s
 
 It will be super-interesting to see what happens with $h$ and $c$ and $\Psi$ for Dirichlet characters.
 
+\begin{proposition}
+For any non-trivial Dirichet character $\chi$, the $h$-function is given by $h(z) = -\chi(-1) z^2$.
+\end{proposition}
+\begin{proof}
+Since $\chi$ is periodic (with period $N$, say), we can write
+$$ m(z) = \frac{1 + \chi(2) z + \ldots + \chi(N-1) z^{N-2} + \chi(N) z^{N-1}}{1-z^N} $$
+and since $\chi(N) = \chi(0) = 0$ while $\chi(N-1)= \chi(-1) = \pm 1 \neq 0$, the degree of the numerator is $N-2$.
+
+Expanding by $\chi(-1) z^N $ in the second step, and then using repeatedly that $\chi$ is multiplicative and periodic, we get
+\begin{align*}
+    m(\frac{1}{z}) &= \frac{1+\chi(2)/z + \chi(3) / z^2 + \ldots + \chi(N-2) / z^{N-3} + \chi(N-1) /z^{N-2} }{1-(1/z)^N}  \\
+        &= \frac{z^2 \cdot \big( \chi(-1)z^{N-2} + \chi(-2) z^{N-3} + \ldots \chi(2-N) z + \chi(1-N) \big)}{\chi(-1) (z^N - 1 )} \\
+        &= \frac{z^2}{- \chi(-1)} \cdot \frac{ \chi(N-1) z^{N-2} + \chi(N-2) z^{N-3} + \ldots + \chi(2) z + 1}{1-z^N} \\
+        &= \frac{z^2}{-\chi(-1)} \cdot m(z) \\
+        &= -\chi(-1) \cdot z^2 \cdot m(z)
+\end{align*}
+and the result follows.
+\end{proof}
 
 
 \end{document}
