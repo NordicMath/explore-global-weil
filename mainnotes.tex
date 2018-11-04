@@ -19,6 +19,24 @@
 \end{definition}
 
 \begin{definition}
+  We say that $m$ has proper convergence when the sum defining $m(z; f)$ absolutely converges whenever $|z| < 1$. All $m$-functions here have proper convergence unless otherwise stated.
+\end{definition}
+
+\begin{proposition}
+  An $m$-function has proper convergence if and only if there exists an $N$ and a monomial $Bx^d$ such that $|f(n)| \le Bx^d$ for all $n \ge N$.
+\end{proposition}
+
+\begin{proof}
+  The sum is absolutely convergent if and only if all tails of the function absolutely converge. Given an $N$ and a polynomial $P(x)$, look at the following tail:
+  $$\sum_{n = N}^{\infty} |f(n)z^{n - 1}| = \sum_{n = N}^{\infty} |f(n)| |z|^{n - 1} \le \sum_{n = N}^{\infty} Bn^d |z|^{n - 1}$$
+  We apply the Cauchy ratio test, and see that:
+  $$L = \lim_{n \to \infty} \left|\frac{B(n + 1)^d |z|^{n}}{Bn^d |z|^{n - 1}}\right| = \lim_{n \to \infty} |z|\left|\frac{(n + 1)^d}{n^d}\right| = \lim_{n \to \infty} |z|\left|1 + \frac{ 1}{n}\right|^d = |z|$$
+  From this, we see that whenever $|z| < 1$ we have absolute convergence of the $m$-function, which is what we wanted to show. For the other direction... \todo{how?}
+
+\end{proof}
+
+
+\begin{definition}
 For any $m$-function $m(z)$,we define the associated $h$-function as
 $$ h(z) = \frac{m(\frac{1}{z})}{m(z) }  $$
 
