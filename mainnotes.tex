@@ -4,13 +4,28 @@
 
 \begin{document}
 
+\tableofcontents
+
 \section{Intro}
 
+
+\section{Background on complex analysis}
+
+A hope is that there is a theorem which immediately implies that the number of poles on the unit circle of any $m$-function is finite, and that the number of zeroes on the unit disc is also finite. I (Andreas) am currently reading the book of Gamelin to find out, but we might need to ask on MathOverflow or search elsewhere.
+
+An analytic (or meromorphic) function should be completely determined by its values on the real line, or on the unit circle (or any other curve segment). This means that if we understand for example $h$ on the unit circle, we can in principle reconstruct $h$ on the entire complex plane. BUT I (Andreas) don't know exactly how to do this. One possibility could be to use the Cauchy-Riemann equations, which we record here in their polar coordinate version.
+
+\begin{proposition}
+Assume that $f(z) = u(z) + i v(z) $ is an analytic function with real part $u$ and imaginary part $v$. Then we have
+$$  \frac{\partial u}{\partial r} = \frac{1}{r} \frac{\partial v}{\partial \theta}$$
+and
+$$ \frac{1}{r} \frac{\partial u}{\partial \theta} = - \frac{\partial v}{\partial r} $$
+\end{proposition}
 
 \section{Plotting m-functions}
 
 
-\section{The $h$ function and the $c$ function}
+\section{The $h$-function and the $c$-function}
 
 
 \begin{definition}
@@ -39,8 +54,18 @@
 \begin{definition}
 For any $m$-function $m(z)$,we define the associated $h$-function as
 $$ h(z) = \frac{m(\frac{1}{z})}{m(z) }  $$
-
+(which of course makes sense only if the $m$-function is defined outside of the unit circle).
 \end{definition}
+
+Ideas:
+\begin{enumerate}
+\item IF we could understand (e.g. via numerical experiments) how the $h$-function looks for a given $m$-function, then we could maybe use this knowledge to DEFINE $m$ outside the unit circle. This would probably imply the pairing conjecture, and could possibly lead to a direct proof of the global functional equation for the underlying $L$-function, without relying on modular or automorphic forms. The reason for thinking this is that for Dirichlet characters, the pairing conjecture is essentially equivalent to the fact that $\chi$ is a character, which is in turn essentially equivalent to the GFE for the Dirichlet $L$-function.
+\item In all the problems that follow it might be the case that Fourier analysis could help us. A conjecture is that for any $m$-function, the Fourier coefficients of $h(1, \theta)$ are rational numbers (perhaps with a simple formula).
+\item Plan: Try to first understand $h(1, \theta)$ via the study of $c(r, \theta)$ as $r$ approaches $1$. Under some reasonable assumptions on $m$ it seems like $c(r, \theta)$ approaches $h(1, \theta)$, using that $m(1/z) \approx m(z)$ near any point on the unit circle where $m$ is continuous. Note that $c$ is defined on the open unit disc (unconditionally) but $c$ is not an analytic function.
+\item Work first with Dirichlet characters, since in this case we know what the $m$-function is in the entire complex plane. This should also clarify which of our definitions and conjectures require the $m$-function to have real coefficients.
+\item A good idea (?): Try to plot $\Psi(\theta)$ for different $m$-functions, maybe via the $c$-function as $r$ approaches 1.
+\item Vague idea: Can we use power series inversion (applied to the denominator) to understand $c$ better?
+\end{enumerate}
 
 \begin{definition}
 For any $m$-function $m(z)$,we define the associated $c$-function as
@@ -50,10 +75,21 @@ $$c(z) = \frac{m(\bar{z})}{m(z)}$$
 
 We write $h(r, \theta)$ for the $h$-function as a function of $z$ in polar coordinates, and similarly for $c$.
 
-\begin{proposition}
-Humpf dumpf
+\begin{lemma}
+(Do we need to assume real coefficients here??) We have
+$$ \vert h(1, \theta) \vert = 1 $$
+for all $\theta$.
+\end{lemma}
 
-\end{proposition}
+\begin{definition}
+Motivated by the previous lemma, we define
+$$  \Psi(\theta) = \arg h(1, \theta)   $$
+(we need to decide which branch of $\arg$ we use).
+\end{definition}
+
+Trying to work out what the CR equations say (all of this might be completely wrong for some stupid reason). I think it is true that for the $h$-function, if we write $h = u+ iv$ and restrict attention to what happens on the unit circle, we get
+$$ u(\theta) = \cos \Psi(\theta) \quad \quad \textrm{and} \quad \quad v(\theta) =  \sin \Psi(\theta) $$
+from which we can determine $\frac{\partial u}{\partial \theta}$ and $\frac{\partial v}{\partial \theta}$. This should (using the chain rule) tell us what happens very near the unit circle as we vary $r$. But I don't see how to get to any differential equations that determine $h$ on the entire complex plane, BUT then again I haven't thought this through thoroughly at all.
 
 \section{Plotting $h$ and $c$}
 
@@ -61,6 +97,27 @@ Humpf dumpf
 
 
 \section{Hadamard product and the $g$ function}
+
+Add the relevant theorem here.
+
+\section{The example of the Riemann $m$-function}
+
+From the Riemann zeta function we get the $m$-function
+
+$$ m(z) = \frac{1}{1-z}   $$
+
+\begin{lemma}
+For this $m$-function, we have
+$$h(z) = -z$$
+and
+$$\psi(\theta ) = \theta + \pi \ \pmod {2\pi}$$
+
+\end{lemma}
+Note that this gives a zig-zag function with nice Fourier coefficients.
+
+\section{Examples: Dirichlet characters}
+
+It will be super-interesting to see what happens with $h$ and $c$ and $\Psi$ for Dirichlet characters.
 
 
 
