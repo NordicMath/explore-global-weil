@@ -177,6 +177,25 @@ and the result follows.
 
 Remark: I think the proof also essentially proves the pairing conjecture, but we have to check carefully and write it down. The point is that the reverse polynomial of the numerator of $m$ is obtained from the original numerator just by substituting $1/z$ in place of $z$, and then multiplying by $\chi(-1) z^{N-2}$. But we have to check what happens with cancellation. Note that the Riemann example has just a single pole, so it cannot satisfy the pairing conjecture.
 
+\begin{lemma}
+We have $\prod_{j=1}^{N-1} (1-\omega^j) = N$.
+\end{lemma}
+
+\begin{proposition}
+The residue of $m(z)$ at $\omega$ is given by
+$$ Res(m, \omega) = - \frac{\tau(\chi)}{N}   $$
+where $\tau(\chi)$ is the Gauss sum of $\chi$.
+\end{proposition}
+
+\begin{proof}
+Define $f(z) = \chi(1) z + \chi(2) z^2 + \ldots + \chi(N-1) z^{N-1}$. Then $f(\omega)$ is the Gauss sum, and
+$$m(z) = \frac{f(z)}{z-z^{N+1}}$$
+which gives the result after a small computation.
+\end{proof}
+We could verify the lemma, then verify the proposition numerically, and also investigate what happens at other poles.
+
+Together with \url{https://en.wikipedia.org/wiki/Gauss_sum} this will help us understand which roots of unity are poles and which ones are not.
+
 \section{Examples of Dirichlet characters}
 
 Unless otherwise stated, we consider the "Generator 0" given by Sage.
