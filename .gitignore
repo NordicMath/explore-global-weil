@@ -11,3 +11,5 @@
 
 *.bbl
 *.blg
+
+.ipynb_checkpoints
