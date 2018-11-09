@@ -213,5 +213,38 @@ We get $m(z) = \frac{1}{1+z+z^2}$. The real plot on $[-1, 1]$ has minimum $\frac
 
 \subsection{Mod 15}
 
+\section{The structure of m-functions}
+We need a clearer purpose for this section...
+\begin{theorem}
+We have the following explicit formulas for values of the $m$-function of a Dirichlet product:
+  $$m(z; A \oplus B) = \sum_{n = 1}^\infty z^{n - 1} A_n m(z^n; B) = \sum_{k = 1}^\infty z^{n - 1} B_n m(z^n; A)$$
+\end{theorem}
+
+
+\begin{proof}
+  First we show that our m-function has proper convergence. Note that:
+  $$(A \oplus B)_n = \sum_{ab = n} A_a B_b$$
+  This gives us, via the triangle equality and bounds for $|A_a| \le c a^d$ and $|B_b| \le c' b^{d'}$ that:
+  $$|(A \oplus B)_n| = \left|\sum_{ab = n} A_a B_b\right| \le \sum_{ab = n} |A_a| |B_b| \le \sum_{ab = n} c a^d c' b^{d'} $$
+  $$ = cc' \sum_{ab = n} a^d b^{d'} \le cc' \sum_{ab = n} (ab)^{\max(d, d')} = cc' \sum_{ab = n} n^{\max(d, d')} $$
+  $$ = cc' \tau(n) n^{\max(d, d')} \le cc' n n^{\max(d, d')} = cc' n^{1 + \max(d, d')}$$
+  Note that this could be improved a lot, for instance by picking a more intelligent bound for $\tau(n)$ than $n$, but this is sufficient for us. We now know that $m((A \oplus B)_n)$ has proper convergence, and we can mess about with the order by which we sum. The definition of $m$-functions gives:
+  $$m(z; A \oplus B) = \sum_{n = 1}^\infty z^{n - 1} \sum_{ab = n} A_a B_b = \sum_{n = 1}^\infty \sum_{ab = n} A_a B_b z^{n - 1}$$
+  Since we have absolute convergence, we permute the order in the following manner:
+  $$ = \sum_{\substack{n = 1\\ ab = n}}^\infty A_a B_b z^{n - 1} = \sum_{a, b \ge 1} A_a B_b z^{ab - 1} = \sum_{a \ge 1} \sum_{b \ge 1} A_a B_b z^{ab - 1}$$
+  Now note that:
+  $$z^{ab - 1} = z^{ab - a + a - 1} = z^{a(b - 1) + a - 1} = (z^a)^{b - 1} z^{a - 1}$$
+  We insert this and get the following elegant rewriting:
+  $$ = \sum_{a \ge 1} \sum_{b \ge 1} A_a B_b (z^a)^{b - 1} z^{a - 1} = \sum_{a \ge 1} A_a z^{a - 1} \sum_{b \ge 1} B_b (z^a)^{b - 1} = \sum_{n \ge 1} A_n z^{n - 1} m(z^n; B)$$
+  This is the desired result. For the other one, swap $A$ and $B$ in the entire argument. 
+  
+\end{proof}
+
+\begin{note}
+  This does not give explicitly the new coefficients of $A \oplus B$, but it for a fixed $z$ we get that: 
+  $$m(z; A \oplus B) = m(z; A \boxtimes m(z^n; B))$$
+  
+\end{note}
+
 
 \end{document}
