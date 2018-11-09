@@ -246,5 +246,22 @@ We have the following explicit formulas for values of the $m$-function of a Diri
   
 \end{note}
 
+\section{General results for Quadratic number fields}
+
+\begin{theorem}
+  For any quadratic number field, we have $h(z) = \pm z^2$ where the exact sign is given in the proof.
+\end{theorem}
+
+\begin{proof}
+  Note first that there is a Dirichlet character such that $F = 1 \oplus \chi$, where $1$ is the Riemann zeta function and $\chi$ a Dirichlet character. By theorem $\ref{???}$, we see that:
+  $$m(z; F) = m(z; 1 \oplus \chi) = \sum_{n \ge 1} (1)_n z^{n - 1} m(z^n; \chi) = \sum_{n \ge 1} z^{n - 1} m(z^n; \chi)$$
+  Inserting $1/z$, we get:
+  $$m(1/z; F) = \sum_{n \ge 1} (1/z)^{n - 1} m((1/z)^n; \chi) = \sum_{n \ge 1} z^{1 - n} m(1/(z^n); \chi) $$
+  Now, notice that, from before, $m(1/z; \chi) = -\chi(-1)z^2m(z; \chi)$, which gives:
+  $$ = \sum_{n \ge 1} z^{1 - n} -\chi(-1)(z^n)^2m(z^n; \chi) = -\chi(-1)\sum_{n \ge 1} z^{1 - n} z^{2n} m(z^n; \chi)$$
+  $$ = -\chi(-1)\sum_{n \ge 1} z^{1 - n + 2n} m(z^n; \chi) = -\chi(-1)\sum_{n \ge 1} z^{n + 1} m(z^n; \chi)$$
+  $$ = -\chi(-1) z^2 \sum_{n \ge 1}  z^{n - 1} m(z^n; \chi) = -\chi(-1) z^2 m(z;1 \oplus \chi) = -\chi(-1) z^2 m(z;F)$$
+  This is the desired result. 
+\end{proof}
 
 \end{document}
