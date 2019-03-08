@@ -264,4 +264,16 @@ We have the following explicit formulas for values of the $m$-function of a Diri
   This is the desired result. 
 \end{proof}
 
+\section{Mellin transform}
+In this section, we prove the BSD conjecture. Let $a_n$ be some numbers and:
+$$f(x) := \sum_{n = 1}^\infty a_n e^{-nx}$$
+We take the Mellin-transform: 
+$$\mathcal{M}\{f(x)\}(s) = \int_0^\infty x^{s - 1} f(x) dx = \int_0^\infty x^{s - 1} \sum_{n = 1}^\infty a_n e^{-nx} dx$$
+$$ = \sum_{n = 1}^\infty a_n \int_0^\infty x^{s - 1} e^{-nx} dx$$
+Let $u = nx$. Then $dx = \frac{1}{n} du$.
+$$ = \sum_{n = 1}^\infty a_n \int_0^\infty \left(\frac{u}{n}\right)^{s - 1} e^{-u} \frac{1}{n} du$$
+$$ = \sum_{n = 1}^\infty a_n \frac{1}{n} \left(\frac{1}{n}\right)^{s - 1} \int_0^\infty u^{s - 1} e^{-u} du$$
+$$ = \sum_{n = 1}^\infty \frac{a_n}{n^s} \Gamma(s) = L(s) \Gamma(s)$$
+
+
 \end{document}
