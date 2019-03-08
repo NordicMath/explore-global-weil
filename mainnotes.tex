@@ -274,6 +274,10 @@ Let $u = nx$. Then $dx = \frac{1}{n} du$.
 $$ = \sum_{n = 1}^\infty a_n \int_0^\infty \left(\frac{u}{n}\right)^{s - 1} e^{-u} \frac{1}{n} du$$
 $$ = \sum_{n = 1}^\infty a_n \frac{1}{n} \left(\frac{1}{n}\right)^{s - 1} \int_0^\infty u^{s - 1} e^{-u} du$$
 $$ = \sum_{n = 1}^\infty \frac{a_n}{n^s} \Gamma(s) = L(s) \Gamma(s)$$
+The Mellin invserse gives us: \todo{verify hypotheses}
+$$f(x) = \int_{c - i \infty}^{x + i \infty} x^{-s} \Gamma(s) L(s)ds$$
+However, note also that:
+$$e^{-x}m(e^{-x}) = f(x)$$
 
 
 \end{document}
