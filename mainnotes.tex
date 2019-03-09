@@ -213,5 +213,89 @@ We get $m(z) = \frac{1}{1+z+z^2}$. The real plot on $[-1, 1]$ has minimum $\frac
 
 \subsection{Mod 15}
 
+\section{The structure of m-functions}
+We need a clearer purpose for this section...
+\begin{theorem}
+We have the following explicit formulas for values of the $m$-function of a Dirichlet product:
+  $$m(z; A \oplus B) = \sum_{n = 1}^\infty z^{n - 1} A_n m(z^n; B) = \sum_{k = 1}^\infty z^{n - 1} B_n m(z^n; A)$$
+\end{theorem}
+
+
+\begin{proof}
+  First we show that our m-function has proper convergence. Note that:
+  $$(A \oplus B)_n = \sum_{ab = n} A_a B_b$$
+  This gives us, via the triangle equality and bounds for $|A_a| \le c a^d$ and $|B_b| \le c' b^{d'}$ that:
+  $$|(A \oplus B)_n| = \left|\sum_{ab = n} A_a B_b\right| \le \sum_{ab = n} |A_a| |B_b| \le \sum_{ab = n} c a^d c' b^{d'} $$
+  $$ = cc' \sum_{ab = n} a^d b^{d'} \le cc' \sum_{ab = n} (ab)^{\max(d, d')} = cc' \sum_{ab = n} n^{\max(d, d')} $$
+  $$ = cc' \tau(n) n^{\max(d, d')} \le cc' n n^{\max(d, d')} = cc' n^{1 + \max(d, d')}$$
+  Note that this could be improved a lot, for instance by picking a more intelligent bound for $\tau(n)$ than $n$, but this is sufficient for us. We now know that $m((A \oplus B)_n)$ has proper convergence, and we can mess about with the order by which we sum. The definition of $m$-functions gives:
+  $$m(z; A \oplus B) = \sum_{n = 1}^\infty z^{n - 1} \sum_{ab = n} A_a B_b = \sum_{n = 1}^\infty \sum_{ab = n} A_a B_b z^{n - 1}$$
+  Since we have absolute convergence, we permute the order in the following manner:
+  $$ = \sum_{\substack{n = 1\\ ab = n}}^\infty A_a B_b z^{n - 1} = \sum_{a, b \ge 1} A_a B_b z^{ab - 1} = \sum_{a \ge 1} \sum_{b \ge 1} A_a B_b z^{ab - 1}$$
+  Now note that:
+  $$z^{ab - 1} = z^{ab - a + a - 1} = z^{a(b - 1) + a - 1} = (z^a)^{b - 1} z^{a - 1}$$
+  We insert this and get the following elegant rewriting:
+  $$ = \sum_{a \ge 1} \sum_{b \ge 1} A_a B_b (z^a)^{b - 1} z^{a - 1} = \sum_{a \ge 1} A_a z^{a - 1} \sum_{b \ge 1} B_b (z^a)^{b - 1} = \sum_{n \ge 1} A_n z^{n - 1} m(z^n; B)$$
+  This is the desired result. For the other one, swap $A$ and $B$ in the entire argument. 
+  
+\end{proof}
+
+\begin{note}
+  This does not give explicitly the new coefficients of $A \oplus B$, but it for a fixed $z$ we get that: 
+  $$m(z; A \oplus B) = m(z; A \boxtimes m(z^n; B))$$
+  
+\end{note}
+
+\section{General results for Quadratic number fields}
+
+\begin{theorem}
+  For any quadratic number field, we have $h(z) = \pm z^2$ where the exact sign is given in the proof.
+\end{theorem}
+
+\begin{proof}
+  Note first that there is a Dirichlet character such that $F = 1 \oplus \chi$, where $1$ is the Riemann zeta function and $\chi$ a Dirichlet character. By theorem $\ref{???}$, we see that:
+  $$m(z; F) = m(z; 1 \oplus \chi) = \sum_{n \ge 1} (1)_n z^{n - 1} m(z^n; \chi) = \sum_{n \ge 1} z^{n - 1} m(z^n; \chi)$$
+  Inserting $1/z$, we get:
+  $$m(1/z; F) = \sum_{n \ge 1} (1/z)^{n - 1} m((1/z)^n; \chi) = \sum_{n \ge 1} z^{1 - n} m(1/(z^n); \chi) $$
+  Now, notice that, from before, $m(1/z; \chi) = -\chi(-1)z^2m(z; \chi)$, which gives:
+  $$ = \sum_{n \ge 1} z^{1 - n} -\chi(-1)(z^n)^2m(z^n; \chi) = -\chi(-1)\sum_{n \ge 1} z^{1 - n} z^{2n} m(z^n; \chi)$$
+  $$ = -\chi(-1)\sum_{n \ge 1} z^{1 - n + 2n} m(z^n; \chi) = -\chi(-1)\sum_{n \ge 1} z^{n + 1} m(z^n; \chi)$$
+  $$ = -\chi(-1) z^2 \sum_{n \ge 1}  z^{n - 1} m(z^n; \chi) = -\chi(-1) z^2 m(z;1 \oplus \chi) = -\chi(-1) z^2 m(z;F)$$
+  This is the desired result. 
+\end{proof}
+
+\section{Mellin transform}
+In this section, we prove the BSD conjecture. Let $a_n$ be some numbers and:
+$$f(x) := \sum_{n = 1}^\infty a_n e^{-nx}$$
+We take the Mellin-transform: 
+$$\mathcal{M}\{f(x)\}(s) = \int_0^\infty x^{s - 1} f(x) dx = \int_0^\infty x^{s - 1} \sum_{n = 1}^\infty a_n e^{-nx} dx$$
+$$ = \sum_{n = 1}^\infty a_n \int_0^\infty x^{s - 1} e^{-nx} dx$$
+Let $u = nx$. Then $dx = \frac{1}{n} du$.
+$$ = \sum_{n = 1}^\infty a_n \int_0^\infty \left(\frac{u}{n}\right)^{s - 1} e^{-u} \frac{1}{n} du$$
+$$ = \sum_{n = 1}^\infty a_n \frac{1}{n} \left(\frac{1}{n}\right)^{s - 1} \int_0^\infty u^{s - 1} e^{-u} du$$
+$$ = \sum_{n = 1}^\infty \frac{a_n}{n^s} \Gamma(s) = L(s) \Gamma(s)$$
+The Mellin invserse gives us: \todo{verify hypotheses}
+$$f(x) = \frac{1}{2\pi i}\int_{c - i \infty}^{c + i \infty} x^{-s} \Gamma(s) L(s)ds$$
+However, note also that:
+$$e^{-x}m(e^{-x}) = f(x)$$
+Now, let $a_n$ be coeffs of some elliptic curve of conductor $N$. Then we have the functional equation:
+$$\Lambda(s) := N^{s/2} \Gamma_\C(s) L(s) = \left(\frac{2\pi}{\sqrt{N}}\right)^{-s} \Gamma(s) L(s) = w\Lambda(2 - s)$$
+Let:
+$$E(N) = \frac{2\pi}{\sqrt{N}}$$
+Note now that:
+$$ f(E(N)) = f\left(\frac{2\pi}{\sqrt{N}}\right) = e^{-E(N)} m\left(e^{-E(N)}\right) = \frac{1}{2\pi i} \int_{c - i \infty}^{c + i \infty} \left(\frac{2\pi}{\sqrt{N}}\right)^{-s} \Gamma(s) L(s)ds$$
+$$ = \frac{1}{2\pi i} \int_{c - i \infty}^{c + i \infty} \Lambda(s) ds = \frac{w}{2\pi i}\int_{c - i \infty}^{c + i \infty} \Lambda(2 - s) ds$$
+Let $c = 1$, \todo{verify this is legal} and we get:
+$$ = \frac{1}{2\pi i} \int_{-\infty}^{\infty} \Lambda(1 + ui) \frac{1}{i}du = \frac{w}{2\pi i}\int_{-\infty}^{\infty} \Lambda(1 - ui) \frac{1}{i}du$$
+$$ = \frac{-1}{2\pi} \int_{-\infty}^{\infty} \Lambda(1 + ui) du = \frac{-w}{2\pi}\int_{-\infty}^{\infty} \Lambda(1 - ui) du$$
+$$ = \frac{w}{2\pi}\int_{-\infty}^{\infty} \Lambda(1 + ui) du$$
+This means we get:
+$$-1 \int_{-\infty}^{\infty} \Lambda(1 + ui) du = w\int_{-\infty}^{\infty} \Lambda(1 + ui) du$$
+When $w = 1$, this implies:
+$$\int_{-\infty}^{\infty} \Lambda(1 + ui) du = 0$$
+Which again means: 
+$$f(E(N)) = e^{-\frac{2\pi}{\sqrt{N}}} m\left(e^{-\frac{2\pi}{\sqrt{N}}}\right) = 0$$
+
+
 
 \end{document}

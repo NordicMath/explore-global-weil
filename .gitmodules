@@ -1,0 +1,3 @@
+[submodule "computation/zeta-types-smc"]
+	path = computation/zeta-types-smc
+	url = https://github.com/NordicMath/zeta-types-smc
