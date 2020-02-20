@@ -366,5 +366,27 @@ $$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^s 
 $$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^s \Gamma(s)\left(\prod_p (1 + a_p p^{-s} + p p^{-2s})^{-1}\right)ds$$
 
 
+\subsection{Rambling4}
+Working with a general m function from a multiplicative function $a_k$, and assuming proper convergence, we get:
+$$a_n = \prod_{p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k} = n} \prod_{i = 1}^k a_{p_i^{e_i}}$$
+$$m(t) = \sum_{n \ge 1}t^{n - 1}a_n = \sum_{n \ge 1}t^{n - 1} \prod_{p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k} = n} \prod_{i = 1}^k a_{p_i^{e_i}}$$
+$$m(t) = \sum_{n \ge 1} \prod_{p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k} = n} t^{(p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}) - 1} \prod_{i = 1}^k a_{p_i^{e_i}}$$
+$$m(t) = \sum_{\substack{k \ge 0 \\ p_1, p_2, \ldots, p_k \text{distinct} \\ e_1, e_2, \ldots, e_k}} t^{(p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}) - 1} \prod_{i = 1}^k a_{p_i^{e_i}}$$
+$$m(t) = \sum_{e_p \text{finite support}} t^{(\prod_p p^{e_p}) - 1} \prod_p a_{p^{e_p}}$$
+
+
+\subsection{Rambling5}
+We have the following formula for an of elliptic curves:
+
+From wolfram alpha:
+$$\frac{1}{1 + xt + yt^2} = \sum_{n = 0}t^n\left(\frac{2^{-n}\left(-x + \sqrt{x^2 - 4y}\right)^{n + 1} + \left(-\frac{x}{2} - \frac{1}{2}\sqrt{x^2 - 4y}\right)^n\left(x + \sqrt{x^2 - 4y}\right)}{2\sqrt{x^2 - 4y}}\right)$$
+We compute:
+$$\frac{1}{1 + xt + yt^2} = \sum_{n = 0}t^n\left(\frac{2^{-n}\left(-x + \sqrt{x^2 - 4y}\right)^{n + 1} + (-2)^{-n}\left(x + \sqrt{x^2 - 4y}\right)^n\left(x + \sqrt{x^2 - 4y}\right)}{2\sqrt{x^2 - 4y}}\right)$$
+$$\frac{1}{1 + xt + yt^2} = \sum_{n = 0}t^n2^{-n - 1}\left(\frac{\left(-x + \sqrt{x^2 - 4y}\right)^{n + 1} + (-1)^n\left(x + \sqrt{x^2 - 4y}\right)^{n + 1}}{\sqrt{x^2 - 4y}}\right)$$
+Thus:
+$$\frac{1}{1 + a_pt + pt^2} = \sum_{n = 0}t^n2^{-n - 1}\left(\frac{\left(-a_p + \sqrt{a_p^2 - 4p}\right)^{n + 1} + (-1)^n\left(a_p + \sqrt{a_p^2 - 4p}\right)^{n + 1}}{\sqrt{a_p^2 - 4p}}\right)$$
+Hence:
+$$a_{p^e} = 2^{-e - 1}\left(\frac{\left(-a_p + \sqrt{a_p^2 - 4p}\right)^{e + 1} + (-1)^e\left(a_p + \sqrt{a_p^2 - 4p}\right)^{e + 1}}{\sqrt{a_p^2 - 4p}}\right)$$
+
 
 \end{document}
