@@ -320,13 +320,18 @@ Mellin transform:
 $$L(s)\Gamma(s) = \int_0^{\infty} x^{s - 1} e^{-x} m(e^{-x})dx$$
 
 Deductions:
+
+THIS IS WRONG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ITS $x^{-s}$
+
+
 Mellin inverse gives:
-$$e^{-x}m(e^{-x}) = \frac{1}{2\pi i}\int_{c - i\infty}^{c + i\infty}x^s \Gamma(s)L(s)ds$$
+$$e^{-x}m(e^{-x}) = \frac{1}{2\pi i}\int_{c - i\infty}^{c + i\infty}x^{-s} \Gamma(s)L(s)ds$$
 Setting $y = e^{-x}$ and $x = -\log(y)$
-$$y m(y) = \frac{1}{2\pi i}\int_{c - i\infty}^{c + i\infty}(-\log(y))^s \Gamma(s)L(s)ds$$
+$$y m(y) = \frac{1}{2\pi i}\int_{c - i\infty}^{c + i\infty}(-\log(y))^{-s} \Gamma(s)L(s)ds$$
 And then:
-$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^s \Gamma(s)L(s)ds$$
-$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^s \Gamma(s)L(s)ds$$
+$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^{-s} \Gamma(s)L(s)ds$$
 Setting in:
 $$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^s \Gamma(s)\prod_p Z_s(s, p)ds$$
 $$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^s \Gamma(s)\prod_p Z_t(p^{-s}, p)ds$$
@@ -388,5 +393,11 @@ $$\frac{1}{1 + a_pt + pt^2} = \sum_{n = 0}t^n2^{-n - 1}\left(\frac{\left(-a_p + 
 Hence:
 $$a_{p^e} = 2^{-e - 1}\left(\frac{\left(-a_p + \sqrt{a_p^2 - 4p}\right)^{e + 1} + (-1)^e\left(a_p + \sqrt{a_p^2 - 4p}\right)^{e + 1}}{\sqrt{a_p^2 - 4p}}\right)$$
 
+
+\subsection{Rambling6}
+$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+We set $x = re^{i\phi}$
+$$m(re^{i\phi}) = \frac{1}{2\pi i re^{i\phi}} \int_{c - i\infty}^{c + i\infty}(-\log(re^{i\phi}))^{-s} \Gamma(s)L(s)ds$$
+$$m(re^{i\phi}) = \frac{1}{2\pi i re^{i\phi}} \int_{c - i\infty}^{c + i\infty}(-\log(r) - i\phi)^{-s} \Gamma(s)L(s)ds$$
 
 \end{document}
