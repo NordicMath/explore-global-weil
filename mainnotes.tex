@@ -299,6 +299,9 @@ $$f(E(N)) = e^{-\frac{2\pi}{\sqrt{N}}} m\left(e^{-\frac{2\pi}{\sqrt{N}}}\right) 
 
 \section{Ramblings}
 
+EVERYTHING HERE IS WRONG! BECAUSE $-s$ not $s$ and $(xM(x))' = m(x)$ not $xm'(x) = M(x)$
+
+
 \subsection{Rambling1}
 
 We have the following main functions using a multiplicative function $a_k$:
@@ -336,6 +339,8 @@ Setting in:
 $$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^s \Gamma(s)\prod_p Z_s(s, p)ds$$
 $$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^s \Gamma(s)\prod_p Z_t(p^{-s}, p)ds$$
 I think this is an analogue of the Euler product!
+
+REVIEW THIS IS WRONG!!!!! 
 
 Back to this:
 $$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}e^{i\pi s}\log(x)^s \Gamma(s)L(s)ds$$
@@ -399,5 +404,218 @@ $$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gam
 We set $x = re^{i\phi}$
 $$m(re^{i\phi}) = \frac{1}{2\pi i re^{i\phi}} \int_{c - i\infty}^{c + i\infty}(-\log(re^{i\phi}))^{-s} \Gamma(s)L(s)ds$$
 $$m(re^{i\phi}) = \frac{1}{2\pi i re^{i\phi}} \int_{c - i\infty}^{c + i\infty}(-\log(r) - i\phi)^{-s} \Gamma(s)L(s)ds$$
+
+
+
+\subsection{Rambling7}
+$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+We see what happens when we invert $x$:
+$$m(1/x) = \frac{x}{2\pi i} \int_{c - i\infty}^{c + i\infty}(-\log(1/x))^{-s} \Gamma(s)L(s)ds$$
+$$ = \frac{x}{2\pi i} \int_{c - i\infty}^{c + i\infty}\log(x)^{-s} \Gamma(s)L(s)ds$$
+$$m(1/x) \frac{1}{x^2} = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}\log(x)^{-s} \Gamma(s)L(s)ds$$
+Let:
+$$F(x) = \left(\int_{c - i\infty}^{c + i\infty}\log(x)^{-s} \Gamma(s)L(s)ds\right)\left(\int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds\right)^{-1}$$
+Then:
+$$m(1/x) \frac{1}{x^2} = \frac{1}{2\pi i x} F(x) \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+$$ = F(x) m(x)$$
+So we have:
+$$m(1/x) = x^2 F(x) m(x)$$
+What remains is to understand $F(x)$. We see:
+$$F(x) = \left(\int_{c - i\infty}^{c + i\infty}\log(x)^{-s} \Gamma(s)L(s)ds\right)\left(\int_{c - i\infty}^{c + i\infty}(-1)^{-s} \log(x)^{-s} \Gamma(s)L(s)ds\right)^{-1}$$
+Set:
+$$u(x) = \int_{c - i\infty}^{c + i\infty}\log(x)^{-s} \Gamma(s)L(s)ds$$
+$$v(x) = \int_{c - i\infty}^{c + i\infty}(-1)^{-s} \log(x)^{-s} \Gamma(s)L(s)ds$$
+Then $F(x) = u(x)/v(x)$ and we have:
+$$F'(x) = \frac{u'(x)v(x) - u(x)v'(x)}{v(x)^2}$$
+We now compute:
+$$u'(x) = \int_{c - i\infty}^{c + i\infty}(\log(x)^{-s})' \Gamma(s)L(s)ds = \int_{c - i\infty}^{c + i\infty}\frac{-s}{x} \log(x)^{-s-1} \Gamma(s)L(s)ds$$
+$$ = \frac{-1}{x} \int_{c - i\infty}^{c + i\infty}\log(x)^{-(s+1)} \Gamma(s + 1)L(s)ds$$
+$$v'(x) = \int_{c - i\infty}^{c + i\infty}(-1)^{-s} (\log(x)^{-s})' \Gamma(s)L(s)ds = \int_{c - i\infty}^{c + i\infty}(-1)^{-s} \frac{-s}{x} \log(x)^{-s-1} \Gamma(s)L(s)ds$$
+$$ = \frac{-1}{x} \int_{c - i\infty}^{c + i\infty}(-1)^{-s}\log(x)^{-(s+1)} \Gamma(s + 1)L(s)ds$$
+Let: 
+$$I_1(x, s) = \log(x)^{-s} \Gamma(s) L(s)$$
+$$I_2(x, s) = \log(x)^{-(s + 1)} \Gamma(s + 1) L(s)$$
+Then:
+$$u(x) = \int_{c - i\infty}^{c + i\infty}I_1(x, s)ds$$
+$$v(x) = \int_{c - i\infty}^{c + i\infty}(-1)^{-s} I_1(x, s)ds$$
+$$u'(x) = \frac{-1}{x} \int_{c - i\infty}^{c + i\infty}I_2(x, s)ds$$
+$$v'(x) = \frac{-1}{x} \int_{c - i\infty}^{c + i\infty}(-1)^{-s}I_2(x, s)ds$$
+We now have:
+$$u(x)v'(x) = \left(\int_{c - i\infty}^{c + i\infty}I_1(x, s)ds\right)\left(\frac{-1}{x} \int_{c - i\infty}^{c + i\infty}(-1)^{-s}I_2(x, s)ds\right)$$
+$$ = \frac{-1}{x} \left(\int_{c - i\infty}^{c + i\infty}I_1(x, s)ds\right)\left(\int_{c - i\infty}^{c + i\infty}(-1)^{-s}I_2(x, s)ds\right)$$
+$$ = \frac{-1}{x} \left(\int_{c - i\infty}^{c + i\infty}\int_{c - i\infty}^{c + i\infty}I_1(x, s_1)(-1)^{-s_2}I_2(x, s_2)ds_1ds_2\right)$$
+And we also have:
+$$u'(x)v(x) = v(x)u'(x) = \left(\int_{c - i\infty}^{c + i\infty}(-1)^{-s} I_1(x, s)ds\right)\left(\frac{-1}{x} \int_{c - i\infty}^{c + i\infty}I_2(x, s)ds\right)$$
+$$ = \frac{-1}{x} \left(\int_{c - i\infty}^{c + i\infty}(-1)^{-s} I_1(x, s)ds\right)\left(\int_{c - i\infty}^{c + i\infty}I_2(x, s)ds\right)$$
+$$ = \frac{-1}{x} \left(\int_{c - i\infty}^{c + i\infty}\int_{c - i\infty}^{c + i\infty}(-1)^{-s_1} I_1(x, s_1)I_2(x, s_2)ds_1ds_2\right)$$
+This gives us: 
+$$u(x)v'(x) - u'(x)v(x)$$
+$$ = \frac{-1}{x} \left(\int_{c - i\infty}^{c + i\infty}\int_{c - i\infty}^{c + i\infty}\left((-1)^{-s_2} - (-1)^{-s_1}\right)I_1(x, s_1)I_2(x, s_2)ds_1ds_2\right)$$
+This is zero whenever L comes from a Dirichlet character or a Quadratic field! How?
+
+\subsection{Rambling8}
+
+
+Say we have: 
+$$m(1/x) = Cx^2m(x)$$
+We have:
+$$(xM(x))' = m(x)$$
+We insert:
+$$(1/x \cdot M(1/x))' = Cx^2(xM(x))'$$
+$$(-1/x^2 \cdot M(1/x) + 1/x \cdot (M(1/x))') = Cx^2(M(x) + xM'(x))$$
+$$(-1/x^2 \cdot M(1/x) + 1/x \cdot (-1/x^2 M'(1/x))) = Cx^2(M(x) + xM'(x))$$
+$$-1/x^2 M(1/x) + -1/x^3 M'(1/x) = Cx^2M(x) + Cx^3M'(x)$$
+$$-x M(1/x) + -1 M'(1/x) = Cx^5M(x) + Cx^6M'(x)$$
+This goes nowhere...
+
+Say we have:
+$$M(1/x) = Cx^2M(x)$$
+$$1/xM(1/x) = CxM(x)$$
+$$(1/xM(1/x))' = C(xM(x))'$$
+$$m(1/x) = Cm(x)$$
+Interresting!
+
+Say we have:
+$$M(1/x) = Cx^2f(x)M(x)$$
+$$1/xM(1/x) = Cxf(x)M(x)$$
+$$(1/xM(1/x))' = C(f(x)xM(x))'$$
+$$m(1/x) = C(f'(x)xM(x) + f(x)(xM(x))')$$
+$$m(1/x) = C(f'(x)xM(x) + f(x)m(x))$$
+
+Say we have:
+$$M(1/x) = Cx^2M(x) + f(x)$$
+$$1/xM(1/x) = CxM(x) + 1/xf(x)$$
+$$(1/xM(1/x))' = (CxM(x) + 1/xf(x))'$$
+$$m(1/x) = Cm(x) + (1/xf(x))'$$
+$$m(1/x) = Cm(x) + (1/xf'(x) - 1/x^2f(x))$$
+
+
+\subsection{Rambling9}
+Derivative of m-function formula by L:
+$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+$$m'(x) = \left(\frac{1}{2\pi i x}\right)' \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds + \frac{1}{2\pi i x} \left(\int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds\right)'$$
+$$m'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds + \frac{1}{2\pi i x} \left(\int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds\right)'$$
+$$m'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds + \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}\left((-\log(x))^{-s}\right)' \Gamma(s)L(s)ds$$
+$$m'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds + \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}\frac{s}{x}(-\log(x))^{-(s + 1)} \Gamma(s)L(s)ds$$
+$$m'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds + \frac{1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-(s + 1)} \Gamma(s + 1)L(s)ds$$
+As $L(s - 1)$ corresponds to multiplication by $1/n$, we see that:
+$$m^{(-1)}(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s - 1)ds$$
+$$ = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-(s + 1)} \Gamma(s + 1)L(s)ds$$
+Because $c$ doesn't matter if it is big enough. We then get:
+$$m'(x) = \frac{-1}{x} m(x) + \frac{1}{x} m^{(-1)}(x)$$
+$$xm'(x) = -m(x) + m^{(-1)}(x)$$
+$$M(x) = -m(x) + m^{(-1)}(x)$$
+Interresting!
+
+We begin with $M(x)$:
+$$M(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds$$
+$$M'(x) = \left(\frac{1}{2\pi i x}\right)' \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds + \frac{1}{2\pi i x} \left(\int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds\right)'$$
+$$M'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds + \frac{1}{2\pi i x} \left(\int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds\right)'$$
+$$M'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds + \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}\left((-\log(x))^{-s}\right)' \Gamma(s)L(s + 1)ds$$
+$$M'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds + \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}\frac{s}{x}(-\log(x))^{-(s + 1)} \Gamma(s)L(s + 1)ds$$
+$$M'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds + \frac{1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-(s + 1)} \Gamma(s + 1)L(s + 1)ds$$
+Because $c$ doesn't matter, we get:
+$$M'(x) = \frac{-1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s + 1)ds + \frac{1}{2\pi i x^2} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+We get:
+$$M'(x) = -\frac{1}{x} M(x) + \frac{1}{x}m(x)$$
+We have that: 
+$$(xM(x))' = m(x)$$
+$$M(x) + xM'(x) = m(x)$$
+We set in:
+$$M(x) + x\left(-\frac{1}{x} M(x) + \frac{1}{x}m(x)\right) = m(x)$$
+$$M(x) + (-M(x) + m(x)) = m(x)$$
+$$m(x) = m(x)$$
+Nothing new...
+
+\subsection{Rambling10}
+
+Let:
+$$m : \C[\epsilon] \to \C[\epsilon]$$
+$$z \mapsto 1 + a_2z + \ldots$$
+We see: 
+$$m(x + y\epsilon) = \sum_{n = 1} a_n (x + y\epsilon)^{n - 1}$$
+$$ = \sum_{n = 1} a_n (x^{n - 1} + (n - 1)x^{n - 2}y\epsilon)$$
+$$ = \sum_{n = 1} a_n x^{n - 1} + \sum_{n = 1} a_n (n - 1)x^{n - 2}y\epsilon$$
+$$ = m(x) + y\epsilon(\sum_{n = 1} a_n (n - 1)x^{n - 2})$$
+$$ = m(x) + \frac{1}{x}y\epsilon(\sum_{n = 1} a_n (n - 1)x^{n - 1})$$
+$$ = m(x) + \frac{1}{x}y\epsilon(\sum_{n = 1} a_n n x^{n - 1} - \sum_{n = 1} a_n x^{n - 1})$$
+$$ = m(x) + \frac{1}{x}y\epsilon(\sum_{n = 1} a_n n x^{n - 1} - m(x))$$
+Let $m^{(1)}$ be such that $(xm(x))' = m^{(1)}(x)$
+$$ = m(x) + \frac{y}{x}\left(m^{(1)}(x) - m(x)\right)\epsilon$$
+
+$$m(0 + y\epsilon) = 1 + a_2y\epsilon$$
+
+\subsection{Rambling11}
+In this section we look at the $p$-adic world. Assume $a_n \in \Q$. Define:
+$$m : \Q_p \to \Q_p$$
+In the usual way. We see that we only have convergence when $|x|_p < 1$. 
+
+Computation gives:
+
+$\ldots103031422022141$ is $5$-adic zero for 389.a1
+
+What does this mean when it isn't really well defined? We need $|x|_p < 1$
+
+Let's work:
+
+If $|x|_p < 1$ then: 
+$$x = p(\sum_{k = 0} x_k p^k)$$
+$$m(x) = m(p(\sum_{k = 0} x_k p^k)) = \sum_{n = 1} a_n (p(\sum_{k = 0} x_k p^k))^{n - 1}$$
+$$ = \sum_{n = 1} a_n p^{n - 1}\left(\sum_{k = 0} x_k p^k\right)^{n - 1}$$
+$$ = \sum_{n = 1} a_n p^{n - 1}\left(\sum_{k_1 + k_2 + \ldots + k_m = n - 1} \binom{n - 1}{k_1, k_2, \ldots, k_m} \prod_{i = 1}^m (x_ip^i)^{k_i} \right)$$
+$$ = \sum_{n = 1} \sum_{k_1 + k_2 + \ldots + k_m = n - 1} a_{k_1 + \ldots + k_m + 1} p^{k_1 + \ldots + k_m} \binom{k_1 + \ldots + k_m}{k_1, k_2, \ldots, k_m} \prod_{i = 1}^m (x_ip^i)^{k_i}$$
+$$ = \sum_{k_1, k_2, \ldots, k_m} a_{k_1 + \ldots + k_m + 1} p^{k_1 + \ldots + k_m} \binom{k_1 + \ldots + k_m}{k_1, k_2, \ldots, k_m} \prod_{i = 1}^m (x_ip^i)^{k_i}$$
+$$ = \sum_{k_1, k_2, \ldots, k_m} a_{k_1 + \ldots + k_m + 1} p^{k_1 + \ldots + k_m} \binom{k_1 + \ldots + k_m}{k_1, k_2, \ldots, k_m} \prod_{i = 1}^m x_i^{k_i}p^{ik_i}$$
+$$ = \sum_{k_1, k_2, \ldots, k_m} a_{k_1 + \ldots + k_m + 1} p^{k_1 + 2k_2 + \ldots + mk_m} p^{k_1 + \ldots + k_m} \binom{k_1 + \ldots + k_m}{k_1, k_2, \ldots, k_m}  \prod_{i = 1}^m x_i^{k_i}$$
+$$ = \sum_{k_1, k_2, \ldots, k_m} a_{k_1 + \ldots + k_m + 1} p^{k_1 + 2k_2 + \ldots + mk_m} p^{k_1 + \ldots + k_m} \binom{k_1 + \ldots + k_m}{k_1, k_2, \ldots, k_m}  \prod_{i = 1}^m x_i^{k_i}$$
+$$ = \sum_{k_1, k_2, \ldots, k_m} p^{2k_1 + 3k_2 + \ldots + (m + 1)k_m} \binom{k_1 + \ldots + k_m}{k_1, k_2, \ldots, k_m} a_{k_1 + \ldots + k_m + 1} \prod_{i = 1}^m x_i^{k_i}$$
+$$ = \sum_{n = 0} \sum_{2k_1 + 3k_2 + \ldots + (m + 1)k_m = n} p^{2k_1 + 3k_2 + \ldots + (m + 1)k_m} \binom{k_1 + \ldots + k_m}{k_1, k_2, \ldots, k_m} a_{k_1 + \ldots + k_m + 1} \prod_{i = 1}^m x_i^{k_i}$$
+$$ = \sum_{n = 0} p^n \sum_{2k_1 + 3k_2 + \ldots + (m + 1)k_m = n} \binom{k_1 + \ldots + k_m}{k_1, k_2, \ldots, k_m} a_{k_1 + \ldots + k_m + 1} \prod_{i = 1}^m x_i^{k_i}$$
+
+Is this useful?
+It might even be wrong because of $a_i^{k_i} > p$
+
+
+
+\subsection{Rambling12}
+In this section we define something similar to an m-function to attempt to get magical zeroes. Basically, define m so that we can do the integral-trick, and then it should have a zero at $\exp(-\frac{2\pi}{\sqrt{N}})$
+
+
+\subsection{Rambling13}
+I may have found a reason why $M(E(389)) = 0$! Becuase:
+$$\Lambda(2 - s) = \Lambda(s)$$
+$$\Lambda(2 - s - 1) = \Lambda(s - 1)$$
+$$\Lambda(1 - s) = \Lambda(s - 1)$$
+$$\Lambda(s) = \Lambda(-s)$$
+Now when we integrate we get cancellation!
+
+How is it related to the rank? The rank is the behavior at the critical point...
+
+\subsection{Rambling14}
+
+Say we have:
+$$m(1/x) = F(x)$$
+$$\int m(1/x) dx = \int F(x) dx$$
+$$1/xM(1/x) = \int F(x) dx$$
+$$M(1/x) = x \int F(x) dx$$
+
+
+
+\subsection{Rambling15}
+$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+
+
+
+
+
+\section{Ideas}
+
+\begin{enumerate}
+  \item Jumps in argument of m-function near abs = 1 may correspond to poles!
+  \item P-adic m-functions! What happens when you use p-adic numbers or other number in the computations! Does it converge p-adically? Make modifications to make it work?
+  \item Integrate in strange paths. For instance bow from 1/2 + 100I to 1/2 - 100I, to compute m.
+  \item Integrate mellin inverse at c negative, to capture poles
+\end{enumerate}
+
 
 \end{document}
