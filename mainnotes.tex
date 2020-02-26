@@ -623,13 +623,70 @@ $$-2\pi ix\log(x)M(x)= \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s}s\Gamma(s)
 $$M(x) = \frac{-1}{2\pi ix\log(x)}\int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s}s\Gamma(s)L(s)ds$$
 
 Can this be used to prove $M(E(N)) = 0$??! Let's try:
-$$M(x) = \frac{-1}{2\pi ix\log(x)}\int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s}s\Gamma(s)L(s)ds$$
+$$M(e^{-\frac{2\pi}{\sqrt{N}}}) = \frac{-1}{2\pi ie^{-\frac{2\pi}{\sqrt{N}}}\log(e^{-\frac{2\pi}{\sqrt{N}}})}\int_{c - i\infty}^{c + i\infty}(-\log(e^{-\frac{2\pi}{\sqrt{N}}}))^{-s}s\Gamma(s)L(s)ds$$
+$$M(e^{-\frac{2\pi}{\sqrt{N}}}) = \frac{-1}{2\pi ie^{-\frac{2\pi}{\sqrt{N}}}\log(e^{-\frac{2\pi}{\sqrt{N}}})}\int_{c - i\infty}^{c + i\infty}(-\log(e^{-\frac{2\pi}{\sqrt{N}}}))^{-s}s\Gamma(s)L(s)ds$$
 
+Let's focus on the integral:
+$$\int_{c - i\infty}^{c + i\infty}(-\log(e^{-\frac{2\pi}{\sqrt{N}}}))^{-s}s\Gamma(s)L(s)ds$$
+$$ = \int_{c - i\infty}^{c + i\infty}\left(\frac{2\pi}{\sqrt{N}}\right)^{-s}s\Gamma(s)L(s)ds$$
+
+We know that:
+$$\Lambda(s) = N^{s/2} \Gamma_\C(s) L(s)$$
+$$ = \Lambda(2 - s)$$
+We see: 
+$$\Lambda(s) = N^{s/2} 2 (2\pi)^{-s} \Gamma(s) L(s)$$
+$$ = 2 \sqrt{N}^{s} (2\pi)^{-s} \Gamma(s) L(s)$$
+$$ = 2 \left(\frac{2\pi}{\sqrt{N}}\right)^{-s} \Gamma(s) L(s)$$
+So we see:
+$$\int_{c - i\infty}^{c + i\infty}\left(\frac{2\pi}{\sqrt{N}}\right)^{-s}s\Gamma(s)L(s)ds$$
+$$ = \int_{c - i\infty}^{c + i\infty}\frac{s}{2} \Lambda(s)ds$$
+$$ = \int_{1 - i\infty}^{1 + i\infty}\frac{s}{2} \Lambda(s)ds$$
+$$ = i \int_{-\infty}^{\infty}\frac{1 + ui}{2} \Lambda(1 + ui)du$$
+$$ = i \int_{-\infty}^{\infty}\frac{1 + ui}{2} \Lambda(2 - (1 + ui))du$$
+$$ = i \int_{-\infty}^{\infty}\frac{1 + ui}{2} \Lambda(1 - ui)du$$
+Doesn't seem to work...
 \subsection{Rambling16}
+Here we will look at modular forms:
+$$f(z) = \sum_{n = 1} a_n e^{2i\pi nz}$$
+$$ = \sum_{n = 1} a_n q^n$$
+$$ = q \sum_{n = 1} a_n q^{n - 1}$$
+$$ = q m(q) = e^{2i\pi z} m(e^{2i\pi z})$$
 
+We know that $f(z + 1) = f(z)$ and $f(-1/z) = z^kf(z)$. The first seems to be completely vacous. The second:
+$$f(-1/z) = z^kf(z)$$
+$$e^{2i\pi (-1/z)} m\left(e^{2i\pi (-1/z)}\right) = z^k(e^{2i\pi z} m(e^{2i\pi z}))$$
+$$\frac{1}{e^{2i\pi (1/z)}} m\left(\frac{1}{e^{2i\pi (1/z)}}\right) = z^k e^{2i\pi z} m(e^{2i\pi z})$$
+$$m\left(\frac{1}{e^{2i\pi (1/z)}}\right) = z^k e^{2i\pi (1/z)} e^{2i\pi z} m(e^{2i\pi z})$$
+$$m\left(e^{2i\pi (-1/z)}\right) = z^k e^{2i\pi (z + 1/z)} m(e^{2i\pi z})$$
+$$m\left(e^{2i\pi (-1/z)}\right) = z^k e^{2i\pi z} e^{2i\pi 1/z} m(e^{2i\pi z})$$
+Let:
+$$x = e^{2i\pi (-1/z)}$$
+Then:
+$$\log(x) = 2i\pi (-1/z)$$
+$$z = \frac{-2i\pi}{\log(x)}$$
+We get:
+$$m(x) = \left(\frac{-2i\pi}{\log(x)}\right)^k e^{2i\pi \frac{-2i\pi}{\log(x)}} \frac{1}{x} m\left(e^{2i\pi \frac{-2i\pi}{\log(x)}}\right)$$
+$$m(x) = \left(\frac{-2i\pi}{\log(x)}\right)^k e^{2i\pi \frac{-2i\pi}{\log(x)}} \frac{1}{x} m\left(e^{2i\pi \frac{-2i\pi}{\log(x)}}\right)$$
+We see:
+$$e^{2i\pi \frac{-2i\pi}{\log(x)}}$$
+$$ = e^{4\pi^2 \log(x)^{-1}}$$
+$$ = \exp(4\pi^2 \log(x)^{-1})$$
+We get:
+$$m(x) = \left(\frac{-2i\pi}{\log(x)}\right)^k \exp(4\pi^2 \log(x)^{-1}) \frac{1}{x} m\left(\exp(4\pi^2 \log(x)^{-1})\right)$$
+$$m(x) = \frac{1}{x} \left(\frac{-2i\pi}{\log(x)}\right)^k \exp(4\pi^2 \log(x)^{-1}) m\left(\exp(4\pi^2 \log(x)^{-1})\right)$$
+How can we understand this strange transform?
+Let $T : x \to \exp(4\pi^2 \log(x)^{-1})$
+Say $x = re^{i\phi}$:
+$$T(x) = \exp(4\pi^2 \log(re^{i\phi})^{-1})$$
+$$T(x) = \exp(4\pi^2 (\log(r) + i\phi)^{-1})$$
+$$T(x) = \exp(4\pi^2 \frac{\log(r) - i\phi}{\log(r)^2 + \phi^2})$$
+$$T(x) = \exp(4\pi^2 \frac{\log(r)}{\log(r)^2 + \phi^2} + 4\pi^2 \frac{-i\phi}{\log(r)^2 + \phi^2})$$
+$$T(x) = \exp(\frac{\log(r)4\pi^2}{\log(r)^2 + \phi^2}) \exp(i\frac{-\phi4\pi^2}{\log(r)^2 + \phi^2})$$
 
-
-
+Tests:
+Let $r = 1$:
+$$T(x) = \exp(\frac{0\cdot 4\pi^2}{\phi^2}) \exp(i\frac{-\phi4\pi^2}{\log(r)^2 + \phi^2})$$
+$$T(x) = \exp(i\frac{-\phi4\pi^2}{\log(r)^2 + \phi^2})$$
 
 \section{Ideas}
 
