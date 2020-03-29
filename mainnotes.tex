@@ -941,6 +941,40 @@ $$f(s, 1) = L(s)$$
 $$f(1, t) = M(t)$$
 
 
+\subsection{Rambling36}
+We have:
+$$M(z) = \sum_{n = 1} a_n \frac{1}{n} z^{n - 1} = \frac{1}{2\pi} \int_0^{2\pi} m(\sqrt{z}e^{it}) (\sum_{n = 1} 1/n u^{n - 1})(\sqrt{z}e^{-it}) dt$$
+We extract:
+$$f(u) = \sum_{n = 1} 1/n u^{n - 1} = -\frac{\ln(1 - u)}{u}$$
+We then get:
+$$M(z) = \sum_{n = 1} a_n \frac{1}{n} z^{n - 1} = \frac{1}{2\pi} \int_0^{2\pi} -\frac{m(\sqrt{z}e^{it})\ln(1 - \sqrt{z}e^{-it})}{\sqrt{z}e^{-it}} dt$$
+
+We also have:
+$$m(z) = \sum_{n = 1} a_n \frac{n}{n} z^{n - 1} = \frac{1}{2\pi} \int_0^{2\pi} M(\sqrt{z}e^{it}) (\sum_{n = 1} n u^{n - 1})(\sqrt{z}e^{-it}) dt$$
+We extract:
+$f(u) = \sum_{n = 1} n u^{n - 1} = \frac{1}{(1 - u)^2}$
+We then get
+$$m(z) = \frac{1}{2\pi} \int_0^{2\pi} \frac{M(\sqrt{z}e^{it})}{(1 - \sqrt{z}e^{-it})^2} dt$$
+
+
+\subsection{Rambling37}
+Take 11.a1 and do pade approximation (500, 500). At 1/x you get something very similar to m(x).
+
+
+\subsection{Rambling38}
+Take:
+$$m_p(z) = 1 + a_p z^p + a_{2p} z^{2p} + \ldots$$
+Let $a_n$ be completely multiplicative. We get:
+$$m_p(z) = 1 + a_p (a_1 (z^p)^1 + a_{2} (z^{p})^2 + \ldots) = 1 + a_p z^p m(z^p)$$
+We see: 
+$$\sum_p (m_p(z) - 1) = m(z, a_n \boxtimes \omega)$$
+We combine:
+$$\sum_p a_p z^p m(z^p) = m(z, a_n \boxtimes \omega)$$
+We also have:
+$$m(z, a_n \boxtimes \omega) = \frac{1}{2\pi} \int_0^{2\pi} m(\sqrt{z} e^{it}) m(\sqrt{z} e^{-it}; \omega)dt$$
+Combining:
+$$\sum_p a_p z^p m(z^p) = \frac{1}{2\pi} \int_0^{2\pi} m(\sqrt{z} e^{it}) m(\sqrt{z} e^{-it}; \omega)dt$$
+
 \section{Zeroes}
 
 \subsection{General zeroes}
@@ -971,8 +1005,11 @@ Both with conjugates.
   \item THE ABOVE BUT SYMBOLLICALYY!!! RESIDUE AND ZEROES OF m(1/z)
   \item Use Cauchy integral formula for expanding taylor series at other points, for instance -1/2
   \item Entire wikipedia page on GF transformations
-  \item Explore completely multiplicative more, specifically m_p(z) factor out a_p
+  \item Explore completely multiplicative more, specifically $m_p(z)$ factor out $a_p$
   \item Understand combined L-m-M function using hadamard product and so on.
+  \item Find FE for $a_nt^nn^{-s}$ and use to find value at $s = 0$.
+  \item Understand the transform zlog(z) on me, we have zero preservance by this transform.
+  \item Sum of Mellin inverse should give sum log x + log y = log xy
 \end{enumerate}
 
 
