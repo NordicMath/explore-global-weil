@@ -983,6 +983,90 @@ Can we solve this differential equation?
 
 For 2000 we get f(1/x) = x f(x)
 
+
+\subsection{Rambling40}
+
+From FE for L we have:
+$$\Lambda(s) = N^{s/2} \Gamma_\C(s) L(s)$$
+$$ = \Lambda(2 - s)$$
+We see: 
+$$\Lambda(s) = N^{s/2} 2 (2\pi)^{-s} \Gamma(s) L(s)$$
+$$ = 2 \sqrt{N}^{s} (2\pi)^{-s} \Gamma(s) L(s)$$
+$$ = 2 \left(\frac{2\pi}{\sqrt{N}}\right)^{-s} \Gamma(s) L(s)$$
+
+We have:
+$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{2\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(-\log(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)))^{-s} \Gamma(s)L(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{2\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(x\frac{2\pi}{\sqrt{N}})^{-s} \Gamma(s)L(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{2\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}(\frac{2\pi}{\sqrt{N}})^{-s} \Gamma(s)L(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{2\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\frac{1}{2}\Lambda(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\Lambda(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(x^{-1})^{-(2 - s)} x^{-2}\Lambda(2 - s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{x^{2}4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(x^{-1})^{-(2 - s)}\Lambda(2 - s)ds$$
+Speculative step:
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{x^{2}4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(x^{-1})^{-s}\Lambda(s)ds$$
+$$m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{x^{-2}4\pi i \exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\Lambda(s)ds$$
+We divide by earlier step:
+$$\frac{m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right))}{m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right))} = \frac{\frac{1}{x^{-2}4\pi i \exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\Lambda(s)ds}{\frac{1}{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\Lambda(s)ds}$$
+$$\frac{m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right))}{m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right))} = \frac{\frac{1}{x^{-2}4\pi i \exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)} }{\frac{1}{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)}}$$
+$$\frac{m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right))}{m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right))} = \frac{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)}{x^{-2}4\pi i \exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)}$$
+$$\frac{m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right))}{m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right))} = x^2 \frac{\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)}{\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)}$$
+$$m\left(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)\right) = x^2 \frac{\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)}{\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)}m\left(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)\right)$$
+Swapping $x$ for $-x$:
+$$m\left(\exp\left(x^{-1}\frac{2\pi}{\sqrt{N}}\right)\right) = x^2 \frac{\exp\left(x\frac{2\pi}{\sqrt{N}}\right)}{\exp\left(x^{-1}\frac{2\pi}{\sqrt{N}}\right)}m\left(\exp\left(x\frac{2\pi}{\sqrt{N}}\right)\right)$$
+Let:
+$$x_1 = \exp\left(x\frac{2\pi}{\sqrt{N}}\right)$$
+$$x_2 = \exp\left(x^{-1}\frac{2\pi}{\sqrt{N}}\right)$$
+We get:
+$$m(x_2) = x^2 \frac{x_1}{x_2}m(x_1)$$
+$$m(x_1) = x^{-2} \frac{x_2}{x_1}m(x_2)$$
+We see $x_1$ and $x_2$ are related by:
+$$\exp(\log(x_1)\log(x_2)) = \exp(x\frac{2\pi}{\sqrt{N}}x^{-1}\frac{2\pi}{\sqrt{N}})$$
+$$ = \exp(\frac{2\pi}{\sqrt{N}}\frac{2\pi}{\sqrt{N}}) = \exp\left(\frac{4\pi^2}{N}\right)$$
+We see: 
+$$x_1 = \exp\left(x\frac{2\pi}{\sqrt{N}}\right)$$
+$$\log(x_1) = x\frac{2\pi}{\sqrt{N}}$$
+$$\log(x_1)\frac{\sqrt{N}}{2\pi} = x$$
+So we get:
+$$m(x_1) = (\log(x_1)\frac{\sqrt{N}}{2\pi})^{-2} \frac{x_2}{x_1}m(x_2)$$
+$$m(x_1) = \frac{4\pi^2}{N}\log(x_1)^{-2} \frac{x_2}{x_1}m(x_2)$$
+We see $x_1$ and $x_2$ are related by:
+$$\exp(\log(x_1)\log(x_2)\log(\exp(\frac{N}{4\pi^2}))) = \exp(x\frac{2\pi}{\sqrt{N}}x^{-1}\frac{2\pi}{\sqrt{N}}\frac{N}{4\pi^2}) = \exp(1) = e$$
+Let: 
+$$a \otimes b = \exp(\log(a)\log(b))$$
+$$\hat{a} \otimes a = e$$
+Then: 
+$$x_1 \otimes x_2 \otimes \exp(\frac{N}{4\pi^2}) = e$$
+$$x_2 = \widehat{x_1 \otimes \exp(\frac{N}{4\pi^2})}$$
+$$x_2 = \hat{x_1} \otimes \widehat{\exp(\frac{N}{4\pi^2})}$$
+$$x_2 = \hat{x_1} \otimes \exp\left(\frac{4\pi^2}{N}\right)$$
+We see:
+$$x_2 = \exp(\frac{4\pi^2}{N}\log(x_1)^{-1})$$
+
+THIS IS AN FE!!!!!!!!!!!!!! WOOOHOOOOO!!!!
+
+We try to simplify further:
+$$\log(x_2) = \frac{4\pi^2}{N}\log(x_1)^{-1}$$
+$$m(x_1) = \frac{4\pi^2}{N}\log(x_1)^{-2} \frac{x_2}{x_1}m(x_2)$$
+$$m(x_1) = \frac{x_2\log(x_2)}{x_1\log(x_1)}m(x_2)$$
+Remember sign!
+$$m(x_1) = \epsilon\frac{x_2\log(x_2)}{x_1\log(x_1)}m(x_2)$$
+
+\subsection{Rambling41}
+
+We try to understand the transform:
+$$f(x) = \exp(\frac{4\pi^2}{N}\log(x)^{-1})$$
+It is an involution!
+
+We investigate:
+$$f(x^n) = \exp(\frac{4\pi^2}{N}\log(x^n)^{-1})$$
+$$ = \exp(\frac{4\pi^2}{N}(n\log(x))^{-1})$$
+$$ = \exp(\frac{4\pi^2}{N}n^{-1}\log(x)^{-1})$$
+$$ = \exp(\frac{4\pi^2}{N}\log(x)^{-1})^{n^{-1}}$$
+$$ = f(x)^{1/n}$$
+And hence: 
+$$f(x)^n = f(x^{1/n})$$
+
 \section{Zeroes}
 
 \subsection{General zeroes}
@@ -1018,6 +1102,12 @@ Both with conjugates.
   \item Find FE for $a_nt^nn^{-s}$ and use to find value at $s = 0$.
   \item Understand the transform zlog(z) on me, we have zero preservance by this transform.
   \item Sum of Mellin inverse should give sum log x + log y = log xy
+  \item Manually test FE using integral for ME function!
+  \item Conjecture: m(x) = 0 for |x| = 1, test using ME function
+  \item Building on the above, perhaps something different is true. Maybe m(x) becomes a distribution
+  \item Understand m(x) at |x| = 1 using the new FE, which seems to relate these numbers to reachable numbers!
+  \item Define $f(x) = x\log(x)m(x)$, then $f(x_1) = f(x_2)$
+  \item Write m as a continued fraction! Maybe just the same as pade?
 \end{enumerate}
 
 
