@@ -1067,6 +1067,239 @@ $$ = f(x)^{1/n}$$
 And hence: 
 $$f(x)^n = f(x^{1/n})$$
 
+
+\subsection{Rambling42}
+
+We have: 
+$$\Lambda(s, \chi) = N^{s/2} \Gamma_\R(s + a) L(s, \chi)$$
+$$\Lambda(s, \chi) = \epsilon \Lambda(1 - s, \overline{\chi})$$
+
+We have: 
+$$\Gamma_\R(s + a) = \pi^{-(s + a)/2} \Gamma\left(\frac{s + a}{2}\right)$$
+
+So we get:
+$$\Lambda(s, \chi) = N^{s/2} \pi^{-(s + a)/2} \Gamma\left(\frac{s + a}{2}\right) L(s, \chi)$$
+$$ = N^{s/2} \pi^{-s/2} \pi^{-a/2} \Gamma\left(\frac{s + a}{2}\right) L(s, \chi)$$
+$$ = \pi^{-a/2} \left(\frac{\pi}{N}\right)^{-s/2} \Gamma\left(\frac{s + a}{2}\right) L(s, \chi)$$
+$$ = \pi^{-a/2} \left(\sqrt{\frac{\pi}{N}}\right)^{-s} \Gamma\left(\frac{s + a}{2}\right) L(s, \chi)$$
+
+We see from the duplication formula that:
+$$\Gamma\left(\frac{s + 1}{2}\right)\Gamma\left(\frac{s}{2}\right) = 2^{1 - s} \sqrt{\pi} \Gamma(s)$$
+$$ = \Gamma\left(\frac{s + a}{2}\right)\Gamma\left(\frac{s + (1 - a)}{2}\right)$$
+
+This gives us:
+$$\Gamma\left(\frac{s + a}{2}\right) = 2^{1 - s} \sqrt{\pi} \Gamma(s) \Gamma\left(\frac{s + (1 - a)}{2}\right)^{-1}$$
+
+So we get:
+$$\Lambda(s, \chi) = \pi^{-a/2} \left(\sqrt{\frac{\pi}{N}}\right)^{-s} 2^{1 - s} \sqrt{\pi} \Gamma(s) \Gamma\left(\frac{s + (1 - a)}{2}\right)^{-1} L(s, \chi)$$
+$$\Lambda(s, \chi) = 2\pi^{-a/2} \pi^{1/2} \left(\sqrt{\frac{\pi}{N}}\right)^{-s} 2^{-s} \Gamma(s) \Gamma\left(\frac{s + (1 - a)}{2}\right)^{-1} L(s, \chi)$$
+$$\Lambda(s, \chi) = 2\pi^{(1-a)/2} \Gamma\left(\frac{s + (1 - a)}{2}\right)^{-1} \left(2\sqrt{\frac{\pi}{N}}\right)^{-s} \Gamma(s) L(s, \chi)$$
+Define $b = 1 - a$ and we get:
+$$\Lambda(s, \chi) = 2\pi^{b/2} \Gamma\left(\frac{s + b}{2}\right)^{-1} \left(2\sqrt{\frac{\pi}{N}}\right)^{-s} \Gamma(s) L(s, \chi)$$
+$$\Lambda(s, \chi)\Gamma\left(\frac{s + b}{2}\right) \frac{\pi^{-b/2}}{2} =  \left(2\sqrt{\frac{\pi}{N}}\right)^{-s} \Gamma(s) L(s, \chi)$$
+Extract: 
+$$\Gamma\left(\frac{s + b}{2}\right)$$
+And do $s \mapsto 1 - s$. We get:
+$$\Gamma\left(\frac{(1 - s) + b}{2}\right)$$
+$$ = \Gamma\left(\frac{1}{2} + \frac{-s}{2} + \frac{b}{2}\right)$$
+$$ = \Gamma\left(1 - \frac{s + 1}{2} + \frac{b}{2}\right)$$
+$$ = \Gamma\left(1 - \frac{s + 1 - b}{2}\right)$$
+$$ = \Gamma\left(1 - \frac{s + a}{2}\right)$$
+$$ = \Gamma\left(1 - \frac{s + a}{2}\right)$$
+
+
+Idea: So different Mellin transform
+
+
+\subsection{Rambling43}
+
+
+Let $a \otimes b = \exp(\log(a)\log(b)) = a^{\log(b)}$
+
+Can this be used to combine local m-functions to global m-functions?
+
+Suppose one is rational, then it will distribute in terms like $(1 - ax)$.
+
+What is: 
+$$(1 - ax) \otimes (1 - bx)$$
+
+We know that:
+$$\log(1 - ax) = - \sum_{n = 1} \frac{(ax)^n}{n}$$
+$$\log(1 - bx) = - \sum_{n = 1} \frac{(bx)^n}{n}$$
+
+$$\log(1 - ax)\log(1 - bx) = (- \sum_{n = 1} \frac{(ax)^n}{n})(- \sum_{n = 1} \frac{(bx)^n}{n})$$
+$$ = (\sum_{n = 1} \frac{a^n}{n}x^n)(\sum_{m = 1} \frac{b^m}{m}x^m)$$
+$$ = \sum_{n = 1} \sum_{m = 1} \frac{a^n}{n}x^n \frac{b^m}{m}x^m$$
+$$ = \sum_{n = 1} \sum_{m = 1} \frac{a^nb^m}{nm} x^{n + m}$$
+$$ = \sum_{k = 1} x^k \sum_{\substack{n + m = k \\ n, m \ge 1}} \frac{a^nb^m}{nm}$$
+
+Now:
+$$(1 - ax) \otimes (1 - bx) = \exp(\log(1 - ax)\log(1 - bx))$$
+$$ = \exp(\sum_{k = 1} \sum_{\substack{n + m = k \\ n, m \ge 1}} \frac{a^nb^m}{nm} x^k)$$
+
+
+\subsection{Rambling46}
+
+We attempt to understand:
+$$f(x) = \exp(\frac{4\pi^2}{N}\log(x)^{-1})$$
+
+Can log have branches:
+$$f(x) = \exp(\frac{4\pi^2}{N}(\log(x) + 2\pi in)^{-1})$$
+
+Let $x = e^{2\pi i \phi}$
+$$f(x) = \exp(\frac{4\pi^2}{N}(i 2 \pi \phi + 2\pi in)^{-1})$$
+$$f(x) = \exp(\frac{4\pi^2}{N}(i 2 \pi (\phi + n))^{-1})$$
+$$f(x) = \exp(-i\frac{2\pi}{N}(\phi + n)^{-1})$$
+
+THIS WORKS EXPERIMENTALLY!!!!! BUT!!! :
+
+$$m(x_1) = \epsilon\frac{x_2\log(x_2)}{x_1(\log(x_1) + 2\pi n i)}m(x_2)$$
+
+
+\subsection{Rambling47}
+
+
+
+
+\subsection{Rambling48}
+
+We attempt to understand:
+$$f(x) = \exp(\frac{4\pi^2}{N}\log(x)^{-1})$$
+
+We look for: 
+$$f(x) = 1/x$$
+
+We see:
+
+$$\exp(\frac{4\pi^2}{N}\log(x)^{-1}) = 1/x$$
+$$\frac{4\pi^2}{N}\log(x)^{-1} = -\log(x)$$
+$$\frac{4\pi^2}{N} = -\log(x)^2$$
+$$\pm \sqrt{-\frac{4\pi^2}{N}} = \log(x)$$
+$$\exp(\pm \sqrt{-\frac{4\pi^2}{N}}) = x$$
+$$x = \exp(\pm i\frac{2\pi}{\sqrt{N}})$$
+
+Here we get: 
+$$m(x) = \epsilon\frac{1/x\log(1/x)}{x\log(x)}m(1/x)$$
+$$m(x) = \epsilon\frac{-1/x\log(x)}{x\log(x)}m(1/x)$$
+$$m(x) = \epsilon\frac{-1}{x^2}m(1/x)$$
+$$x^2m(x) = -\epsilon m(1/x)$$
+$$m(1/x) = -\epsilon x^2m(x)$$
+
+
+AMAZING!!!!!!
+
+Conjecture: This holds for all $x$
+
+\subsection{Rambling49}
+
+We do it again for branches:
+
+We attempt to understand:
+$$f(x) = \exp(\frac{4\pi^2}{N}\log(x)^{-1})$$
+
+We look for: 
+$$f(x) = 1/x$$
+
+We see:
+
+$$\exp(\frac{4\pi^2}{N}\log(x)^{-1}) = 1/x$$
+$$\frac{4\pi^2}{N}(\log(x) + 2\pi mi)^{-1} = \log(1/x) + 2\pi ni$$
+$$\frac{4\pi^2}{N}(\log(x) + 2\pi mi)^{-1} = -(\log(x) + 2\pi ni)$$
+$$-\frac{4\pi^2}{N} = (\log(x) + 2\pi mi)(\log(x) + 2\pi ni)$$
+$$\frac{4\pi^2}{N} = (\log(x)^2 + (2\pi ni + 2\pi mi)\log(x) + 2\pi ni2\pi mi)$$
+$$\frac{4\pi^2}{N} = \log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2nm$$
+$$\log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2nm - \frac{4\pi^2}{N} = 0$$
+$$\log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2(nm + \frac{1}{N}) = 0$$
+Let $\alpha = 2\pi i$
+$$\log(x)^2 + \alpha(n + m)\log(x) + \alpha^2(nm + \frac{1}{N}) = 0$$
+We use abc-formula:
+$$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+We see $a = 1$ and $b = \alpha(n + m)$ and $c = \alpha^2(nm + \frac{1}{N})$
+We input this:
+$$\frac{-\alpha(n + m) \pm \sqrt{(\alpha(n + m))^2 - 4\alpha^2(nm + \frac{1}{N})}}{2}$$
+$$\frac{-\alpha(n + m) \pm \sqrt{\alpha^2(n + m)^2 - 4\alpha^2(nm + \frac{1}{N})}}{2}$$
+$$\frac{-\alpha(n + m) \pm \alpha\sqrt{(n + m)^2 - 4(nm + \frac{1}{N})}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{n^2 + 2nm + m^2 - 4(nm + \frac{1}{N})}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{n^2 - 2nm + m^2 - \frac{4}{N}}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{(n - m)^2 - \frac{4}{N}}}{2}$$
+
+For these points we have:
+$$m(x_1) = \epsilon\frac{x_2(\log(x_2) + 2\pi m i)}{x_1(\log(x_1) + 2\pi n i)}m(x_2)$$
+
+
+Let $m = -n$ as this will be useful for cancellation:
+
+$$m(x_1) = \epsilon\frac{x_2(\log(x_2) - 2\pi n i)}{x_1(\log(x_1) + 2\pi n i)}m(x_2)$$
+$$m(x) = \epsilon\frac{1/x(\log(1/x) - 2\pi n i)}{x(\log(x) + 2\pi n i)}m(1/x)$$
+$$m(x) = \epsilon\frac{-1/x(\log(x) + 2\pi n i)}{x(\log(x) + 2\pi n i)}m(1/x)$$
+$$m(x) = \epsilon\frac{-1/x}{x}m(1/x)$$
+$$m(x) = -\epsilon\frac{1}{x^2}m(1/x)$$
+$$m(1/x) = -\epsilon x^2m(x)$$
+
+
+AMAZING!!!
+
+For which x, now we have put $m = -n$:
+
+$$\log(x) = \alpha\frac{-(n + m) \pm \sqrt{(n - m)^2 - \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{-(n + -n) \pm \sqrt{(n - -n)^2 - \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{\pm \sqrt{(2n)^2 - \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{\pm 2\sqrt{n^2 - \frac{1}{N}}}{2}$$
+$$ = \pm \alpha\sqrt{n^2 - \frac{1}{N}}$$
+$$ = \pm 2\pi i\sqrt{n^2 - \frac{1}{N}}$$
+$$x = \exp(\pm 2\pi i\sqrt{n^2 - \frac{1}{N}})$$
+
+
+AMAZING!!!! COUNTABLY MANY POINTS WHERE FE HOLDS!!!!
+
+Are there any collisions:
+$$\exp(\pm 2\pi i\sqrt{n^2 - \frac{1}{N}}) = \exp(\pm 2\pi i\sqrt{m^2 - \frac{1}{N}})$$
+$$\pm 2\pi i\sqrt{n^2 - \frac{1}{N}} = 2\pi i\sqrt{m^2 - \frac{1}{N}} + 2\pi i k$$
+$$\pm \sqrt{n^2 - \frac{1}{N}} = \sqrt{m^2 - \frac{1}{N}} + 2\pi i k$$
+$$n^2 - \frac{1}{N} = (\sqrt{m^2 - \frac{1}{N}} + 2\pi i k)^2$$
+$$n^2 - \frac{1}{N} = m^2 - \frac{1}{N} + 4\pi i k\sqrt{m^2 - \frac{1}{N}} + -4\pi^2k^2$$
+$$n^2 - m^2 = 4\pi i k\sqrt{m^2 - \frac{1}{N}} + -4\pi^2k^2$$
+We need LHS to be an integer!
+$$4\pi i k\sqrt{m^2 - \frac{1}{N}} - 4\pi^2k^2 \in \Z$$
+We see that $m$ and $n$ are always integers, so that part will always be imaginary. No collisions! Except k = 0: Then we get:
+$$n^2 - m^2 = 0$$
+Which implies $n = m$, not possible.
+
+
+\subsection{Rambling50}
+
+The above implies the following. If there exists $P(x)$ polynomial s.t.
+$$m(1/x) = P(x)m(x)$$
+Then $P(x) = -\epsilon x^2$. Unless the points are all zeroes or poles... let's test that: 
+
+We have:
+$$x = \exp(\pm 2\pi i\sqrt{n^2 - \frac{1}{N}})$$
+Let's choose:
+$$x = \exp(2\pi i\sqrt{n^2 - \frac{1}{N}})$$
+The other direction follows...
+
+We have:
+$$m(1/x) = -\epsilon x^2m(x)$$
+$$m(\exp(-2\pi i\sqrt{n^2 - \frac{1}{N}})) = -\epsilon (\exp(2\pi i\sqrt{n^2 - \frac{1}{N}}))^2m(\exp(2\pi i\sqrt{n^2 - \frac{1}{N}}))$$
+$$m(\exp(-2\pi i\sqrt{n^2 - \frac{1}{N}})) = -\epsilon \exp(4\pi i\sqrt{n^2 - \frac{1}{N}})m(\exp(2\pi i\sqrt{n^2 - \frac{1}{N}}))$$
+$$\overline{m(\exp(2\pi i\sqrt{n^2 - \frac{1}{N}}))} = -\epsilon \exp(4\pi i\sqrt{n^2 - \frac{1}{N}})m(\exp(2\pi i\sqrt{n^2 - \frac{1}{N}}))$$
+$$\frac{\overline{m(\exp(2\pi i\sqrt{n^2 - \frac{1}{N}}))}}{m(\exp(2\pi i\sqrt{n^2 - \frac{1}{N}}))} = -\epsilon \exp(4\pi i\sqrt{n^2 - \frac{1}{N}})$$
+Let: 
+$y = m(\exp(2\pi i\sqrt{n^2 - \frac{1}{N}}))$
+We get:
+$$\frac{\overline{y}}{y} = -\epsilon \exp(4\pi i\sqrt{n^2 - \frac{1}{N}})$$
+We know that $\frac{\overline{y}}{y}$ must be absolute value 1.
+This is fully possible! We get that:
+$$\sqrt{\frac{\overline{y}}{y}} = e^{i \arg(y)} = \sqrt{-\epsilon} \exp(2\pi i\sqrt{n^2 - \frac{1}{N}})$$
+
+
+\subsection{Rambling51}
+
+
+
+
+
+
 \section{Zeroes}
 
 \subsection{General zeroes}
@@ -1108,6 +1341,8 @@ Both with conjugates.
   \item Understand m(x) at |x| = 1 using the new FE, which seems to relate these numbers to reachable numbers!
   \item Define $f(x) = x\log(x)m(x)$, then $f(x_1) = f(x_2)$
   \item Write m as a continued fraction! Maybe just the same as pade?
+  \item Perrons formula and Mellin discrete convolution!
+  \item Look at 2pi branches of our transform
 \end{enumerate}
 
 
