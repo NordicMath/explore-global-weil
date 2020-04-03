@@ -1295,7 +1295,87 @@ $$\sqrt{\frac{\overline{y}}{y}} = e^{i \arg(y)} = \sqrt{-\epsilon} \exp(2\pi i\s
 
 \subsection{Rambling51}
 
+We have $f(1/x) = 1/f(x)$. We set $x_1 = 1/x$ and $x_2 = 1/f(x)$. This gives:
+$$m(1/x) = \epsilon\frac{1/f(x)\log(1/f(x))}{1/x\log(1/x)}m(1/f(x))$$
+$$m(1/x) = \epsilon\frac{-x\log(f(x))}{-f(x)\log(x)}m(1/f(x))$$
+$$m(1/x) = \epsilon\frac{x\log(f(x))}{f(x)\log(x)}m(1/f(x))$$
+We also have:
+$$m(x) = \epsilon\frac{f(x)\log(f(x))}{x\log(x)} m(f(x))$$
+We divide:
+$$\frac{m(1/x)}{m(x)} = \frac{\epsilon\frac{x\log(f(x))}{f(x)\log(x)}m(1/f(x))}{\epsilon\frac{f(x)\log(f(x))}{x\log(x)} m(f(x))}$$
+$$\frac{m(1/x)}{m(x)} = \frac{\frac{x}{f(x)}m(1/f(x))}{\frac{f(x)}{x} m(f(x))}$$
+$$\frac{m(1/x)}{m(x)} = \frac{x^2}{f(x)^2} \frac{m(1/f(x))}{m(f(x))}$$
+Suppose $m(1/x) = g(x)m(x)$. We input this:
+$$\frac{g(x)m(x)}{m(x)} = \frac{x^2}{f(x)^2} \frac{g(f(x))m(f(x))}{m(f(x))}$$
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+We have a functional equation for $g$! Let's see if $g(x) = Cx^2$ works!
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+$$Cx^2 = \frac{x^2}{f(x)^2} Cf(x)^2$$
+This works perfectly!! Back to FE:
 
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+
+Say $g = g_1 + g_2$ and say:
+$$g_1(x) = \frac{x^2}{f(x)^2} g_1(f(x))$$
+$$g_2(x) = \frac{x^2}{f(x)^2} g_2(f(x))$$
+We add these together:
+$$g_1(x) + g_2(x) = \frac{x^2}{f(x)^2} g_1(f(x)) + \frac{x^2}{f(x)^2} g_2(f(x))$$
+$$g_1(x) + g_2(x) = \frac{x^2}{f(x)^2} (g_1(f(x)) + g_2(f(x)))$$
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+Also, say $g = Cg_1$. And say:
+$$g_1(x) = \frac{x^2}{f(x)^2} g_1(f(x))$$
+We multiply by $C$:
+$$Cg_1(x) = \frac{x^2}{f(x)^2} Cg_1(f(x))$$
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+We have that this $FE$ is linear!!! We test $g(x) = x^n$. We get:
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+$$x^n = \frac{x^2}{f(x)^2} f(x)^n$$
+$$x^{n - 2} = f(x)^{n - 2}$$
+If $n = 2$ then okay. Else we get:
+$$|x| = |f(x)|$$
+This is not true in general. Is this enough? Maybe... We test something else. Assume:
+$$g(x) = \sum_{n = 0} b_n x^n$$
+We set this in:
+$$\sum_{n = 0} b_n x^n = \frac{x^2}{f(x)^2} \sum_{n = 0} b_n f(x)^n$$
+$$\sum_{n = 0} b_n x^{n - 2} = \sum_{n = 0} b_n f(x)^{n - 2}$$
+$$\sum_{n = 0} b_n (x^{n - 2} - f(x)^{n - 2}) = 0$$
+Assume $b_n$ is a solution. Since $c_n = 0$ but $c_2 = b_2$ is also a solution, we have $b_n - c_n$ also a solution. Hence we can set $b_2 = 0$. We get:
+$$b_0 (x^{-2} - f(x)^{-2}) + b_1 (x^{-1} - f(x)^{-1}) + \sum_{n = 3} b_n (x^{n - 2} - f(x)^{n - 2}) = 0$$
+
+We try another path: 
+Back to FE:
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+We set:
+$$x = \exp\left(y\frac{2\pi}{\sqrt{N}}\right)$$
+$$f(x) = \exp\left(y^{-1}\frac{2\pi}{\sqrt{N}}\right)$$
+We get:
+$$g(\exp\left(y\frac{2\pi}{\sqrt{N}}\right)) = \frac{( \exp\left(y\frac{2\pi}{\sqrt{N}}\right))^2}{(\exp\left(y^{-1}\frac{2\pi}{\sqrt{N}}\right))^2} g(\exp\left(y^{-1}\frac{2\pi}{\sqrt{N}}\right))$$
+
+
+NOTE!!!! We know:
+$$m(1/x) = -\epsilon x^2 m(x)$$
+For: 
+$$x = e^{\pm 2\pi i \frac{1}{\sqrt{N}}}$$
+So:
+$$g(x) = -\epsilon x^2$$
+For this point.
+
+We also know this for: 
+$$x = \exp(\pm 2\pi i \sqrt{n^2 - \frac{1}{\sqrt{N}}})$$
+This is a converging sequence, it has a limit point, so it follows from the identity theorem! This works for meromorphic!!!!
+
+
+
+
+\subsection{Rambling52 COME BACK HERE}
+
+We multiply instead:
+$$m(1/x)m(x) = \epsilon\frac{x\log(f(x))}{f(x)\log(x)}m(1/f(x))\epsilon\frac{f(x)\log(f(x))}{x\log(x)} m(f(x))$$
+$$m(1/x)m(x) = \epsilon^2\frac{\log(f(x))}{\log(x)}\frac{\log(f(x))}{\log(x)} m(1/f(x)) m(f(x))$$
+$$m(1/x)m(x) = \frac{\log(f(x))^2}{\log(x)^2}m(1/f(x)) m(f(x))$$
+Say that $m(1/x) = g(x)m(x)$. Then:
+$$g(x)m(x)m(x) = \frac{\log(f(x))^2}{\log(x)^2}g(f(x))m(f(x)) m(f(x))$$
+$$g(x)m(x)^2 = \frac{\log(f(x))^2}{\log(x)^2}g(f(x))m(f(x))^2$$
 
 
 
@@ -1343,6 +1423,9 @@ Both with conjugates.
   \item Write m as a continued fraction! Maybe just the same as pade?
   \item Perrons formula and Mellin discrete convolution!
   \item Look at 2pi branches of our transform
+  \item Use various FEs to tease out main FE
+  \item Our L FE has f(1/x) = 1/f(x) use this!
+
 \end{enumerate}
 
 
