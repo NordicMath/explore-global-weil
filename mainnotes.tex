@@ -296,6 +296,222 @@ $$\int_{-\infty}^{\infty} \Lambda(1 + ui) du = 0$$
 Which again means: 
 $$f(E(N)) = e^{-\frac{2\pi}{\sqrt{N}}} m\left(e^{-\frac{2\pi}{\sqrt{N}}}\right) = 0$$
 
+\section{FEs for Elliptic curves}
+
+\subsection{Mellin transform}
+
+We begin with from the previous section the following Mellin inverse:
+$$e^{-x}m(e^{-x}) = \frac{1}{2\pi i}\int_{c - i \infty}^{c + i \infty} x^{-s} \Gamma(s) L(s)ds$$
+We set $x = -\log(y)$ and $y = e^{-x}$. This gives:
+$$ym(y) = \frac{1}{2\pi i}\int_{c - i \infty}^{c + i \infty} (-\log(y))^{-s} \Gamma(s) L(s)ds$$
+$$m(y) = \frac{1}{2\pi i y}\int_{c - i \infty}^{c + i \infty} (-\log(y))^{-s} \Gamma(s) L(s)ds$$
+We use $x$ instead of $y$ to get final form:
+$$m(x) = \frac{1}{2\pi i x}\int_{c - i \infty}^{c + i \infty} (-\log(x))^{-s} \Gamma(s) L(s)ds$$
+
+\subsection{First Functional Equation}
+
+From FE for L we have:
+$$\Lambda(s) = N^{s/2} \Gamma_\C(s) L(s)$$
+$$ = \epsilon \Lambda(2 - s)$$
+We see: 
+$$\Lambda(s) = N^{s/2} 2 (2\pi)^{-s} \Gamma(s) L(s)$$
+$$ = 2 \sqrt{N}^{s} (2\pi)^{-s} \Gamma(s) L(s)$$
+$$ = 2 \left(\frac{2\pi}{\sqrt{N}}\right)^{-s} \Gamma(s) L(s)$$
+
+We have:
+$$m(x) = \frac{1}{2\pi i x} \int_{c - i\infty}^{c + i\infty}(-\log(x))^{-s} \Gamma(s)L(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{2\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(-\log(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)))^{-s} \Gamma(s)L(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{2\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(x\frac{2\pi}{\sqrt{N}})^{-s} \Gamma(s)L(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{2\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}(\frac{2\pi}{\sqrt{N}})^{-s} \Gamma(s)L(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{2\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\frac{1}{2}\Lambda(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\Lambda(s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{1}{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(x^{-1})^{-(2 - s)} x^{-2}\epsilon\Lambda(2 - s)ds$$
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{\epsilon}{x^{2}4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(x^{-1})^{-(2 - s)}\Lambda(2 - s)ds$$
+Speculative step:
+$$m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)) = \frac{\epsilon}{x^{2}4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}(x^{-1})^{-s}\Lambda(s)ds$$
+Replacing $x$ by $x^{-1}$
+$$m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)) = \frac{\epsilon}{x^{-2}4\pi i \exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\Lambda(s)ds$$
+We divide by earlier step:
+$$\frac{m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right))}{m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right))} = \epsilon \frac{\frac{1}{x^{-2}4\pi i \exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\Lambda(s)ds}{\frac{1}{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)} \int_{c - i\infty}^{c + i\infty}x^{-s}\Lambda(s)ds}$$
+$$\frac{m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right))}{m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right))} = \epsilon \frac{\frac{1}{x^{-2}4\pi i \exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)} }{\frac{1}{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)}}$$
+$$\frac{m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right))}{m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right))} = \epsilon\frac{4\pi i \exp\left(-x\frac{2\pi}{\sqrt{N}}\right)}{x^{-2}4\pi i \exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)}$$
+$$\frac{m(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right))}{m(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right))} = \epsilon x^2 \frac{\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)}{\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)}$$
+$$m\left(\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)\right) = \epsilon x^2 \frac{\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)}{\exp\left(-x^{-1}\frac{2\pi}{\sqrt{N}}\right)}m\left(\exp\left(-x\frac{2\pi}{\sqrt{N}}\right)\right)$$
+Swapping $x$ for $-x$:
+$$m\left(\exp\left(x^{-1}\frac{2\pi}{\sqrt{N}}\right)\right) = x^2 \frac{\exp\left(x\frac{2\pi}{\sqrt{N}}\right)}{\exp\left(x^{-1}\frac{2\pi}{\sqrt{N}}\right)}m\left(\exp\left(x\frac{2\pi}{\sqrt{N}}\right)\right)$$
+Let:
+$$x_1 = \exp\left(x\frac{2\pi}{\sqrt{N}}\right)$$
+$$x_2 = \exp\left(x^{-1}\frac{2\pi}{\sqrt{N}}\right)$$
+We get:
+$$m(x_2) = \epsilon x^2 \frac{x_1}{x_2}m(x_1)$$
+$$m(x_1) = \epsilon x^{-2} \frac{x_2}{x_1}m(x_2)$$
+We see $x_1$ and $x_2$ are related by:
+$$\exp(\log(x_1)\log(x_2)) = \exp(x\frac{2\pi}{\sqrt{N}}x^{-1}\frac{2\pi}{\sqrt{N}})$$
+$$ = \exp(\frac{2\pi}{\sqrt{N}}\frac{2\pi}{\sqrt{N}}) = \exp\left(\frac{4\pi^2}{N}\right)$$
+We see: 
+$$x_1 = \exp\left(x\frac{2\pi}{\sqrt{N}}\right)$$
+$$\log(x_1) = x\frac{2\pi}{\sqrt{N}}$$
+$$\log(x_1)\frac{\sqrt{N}}{2\pi} = x$$
+So we get:
+$$m(x_1) = \epsilon (\log(x_1)\frac{\sqrt{N}}{2\pi})^{-2} \frac{x_2}{x_1}m(x_2)$$
+$$m(x_1) = \frac{4\pi^2}{N}\log(x_1)^{-2} \frac{x_2}{x_1}m(x_2)$$
+We see $x_1$ and $x_2$ are related by:
+$$\exp(\log(x_1)\log(x_2)\log(\exp(\frac{N}{4\pi^2}))) = \exp(x\frac{2\pi}{\sqrt{N}}x^{-1}\frac{2\pi}{\sqrt{N}}\frac{N}{4\pi^2}) = \exp(1) = e$$
+Let: 
+$$a \otimes b = \exp(\log(a)\log(b))$$
+$$\hat{a} \otimes a = e$$
+Then: 
+$$x_1 \otimes x_2 \otimes \exp(\frac{N}{4\pi^2}) = e$$
+$$x_2 = \widehat{x_1 \otimes \exp(\frac{N}{4\pi^2})}$$
+$$x_2 = \hat{x_1} \otimes \widehat{\exp(\frac{N}{4\pi^2})}$$
+$$x_2 = \hat{x_1} \otimes \exp\left(\frac{4\pi^2}{N}\right)$$
+We see:
+$$x_2 = \exp(\frac{4\pi^2}{N}\log(x_1)^{-1})$$
+
+We try to simplify further:
+$$\log(x_2) = \frac{4\pi^2}{N}\log(x_1)^{-1}$$
+$$m(x_1) = \epsilon \frac{4\pi^2}{N}\log(x_1)^{-2} \frac{x_2}{x_1}m(x_2)$$
+$$m(x_1) = \epsilon\frac{x_2\log(x_2)}{x_1\log(x_1)}m(x_2)$$
+
+This holds for: 
+$$x_2 = \exp(\frac{4\pi^2}{N}\log(x_1)^{-1})$$
+
+\subsection{Branches}
+
+Note that there are branches here! First branching:
+
+
+$$m(x_1) = \epsilon\frac{x_2\log(x_2)}{x_1(\log(x_1) + 2\pi in)}m(x_2)$$
+
+Holds for:
+$$x_2 = \exp(\frac{4\pi^2}{N}(\log(x_1) + 2\pi in)^{-1})$$
+
+This is computationally confirmed.
+
+However, there is somehow a second branch! We get the transform relation:
+$$\log(x_2) + 2\pi im = \frac{4\pi^2}{N}(\log(x_1) + 2\pi in)^{-1}$$
+
+I think this corresponds to the formula:
+$$m(x_1) = \epsilon\frac{x_2(\log(x_2) + 2\pi im)}{x_1(\log(x_1) + 2\pi in)}m(x_2)$$
+
+
+\subsection{A note on the transform}
+
+We try to understand the transform:
+$$f(x) = \exp(\frac{4\pi^2}{N}\log(x)^{-1})$$
+It is an involution!
+
+We investigate:
+$$f(x^n) = \exp(\frac{4\pi^2}{N}\log(x^n)^{-1})$$
+$$ = \exp(\frac{4\pi^2}{N}(n\log(x))^{-1})$$
+$$ = \exp(\frac{4\pi^2}{N}n^{-1}\log(x)^{-1})$$
+$$ = \exp(\frac{4\pi^2}{N}\log(x)^{-1})^{n^{-1}}$$
+$$ = f(x)^{1/n}$$
+And hence: 
+$$f(x)^n = f(x^{1/n})$$
+This gives importantly for later:
+$$f(x)^-1 = f(x^{1/-1}) = f(x^{-1})$$
+
+\subsection{A second FE on some points}
+We attempt to understand:
+$$f(x) = \exp(\frac{4\pi^2}{N}\log(x)^{-1})$$
+
+We look for: 
+$$f(x) = 1/x$$
+
+We see:
+
+$$\exp(\frac{4\pi^2}{N}\log(x)^{-1}) = 1/x$$
+$$\frac{4\pi^2}{N}(\log(x) + 2\pi mi)^{-1} = \log(1/x) + 2\pi ni$$
+$$\frac{4\pi^2}{N}(\log(x) + 2\pi mi)^{-1} = -(\log(x) + 2\pi ni)$$
+$$-\frac{4\pi^2}{N} = (\log(x) + 2\pi mi)(\log(x) + 2\pi ni)$$
+$$-\frac{4\pi^2}{N} = (\log(x)^2 + (2\pi ni + 2\pi mi)\log(x) + 2\pi ni2\pi mi)$$
+$$-\frac{4\pi^2}{N} = \log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2nm$$
+$$\log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2nm + \frac{4\pi^2}{N} = 0$$
+$$\log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2(nm - \frac{1}{N}) = 0$$
+Let $\alpha = 2\pi i$
+$$\log(x)^2 + \alpha(n + m)\log(x) + \alpha^2(nm - \frac{1}{N}) = 0$$
+We use abc-formula:
+$$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+We see $a = 1$ and $b = \alpha(n + m)$ and $c = \alpha^2(nm + \frac{1}{N})$
+We input this:
+$$\frac{-\alpha(n + m) \pm \sqrt{(\alpha(n + m))^2 - 4\alpha^2(nm - \frac{1}{N})}}{2}$$
+$$\frac{-\alpha(n + m) \pm \sqrt{\alpha^2(n + m)^2 - 4\alpha^2(nm - \frac{1}{N})}}{2}$$
+$$\frac{-\alpha(n + m) \pm \alpha\sqrt{(n + m)^2 - 4(nm - \frac{1}{N})}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{n^2 + 2nm + m^2 - 4(nm - \frac{1}{N})}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{n^2 - 2nm + m^2 + \frac{4}{N}}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{(n - m)^2 + \frac{4}{N}}}{2}$$
+
+For these points we have:
+$$m(x_1) = \epsilon\frac{x_2(\log(x_2) + 2\pi m i)}{x_1(\log(x_1) + 2\pi n i)}m(x_2)$$
+
+
+Let $m = -n$ as this will be useful for cancellation:
+
+$$m(x_1) = \epsilon\frac{x_2(\log(x_2) - 2\pi n i)}{x_1(\log(x_1) + 2\pi n i)}m(x_2)$$
+$$m(x) = \epsilon\frac{1/x(\log(1/x) - 2\pi n i)}{x(\log(x) + 2\pi n i)}m(1/x)$$
+$$m(x) = \epsilon\frac{-1/x(\log(x) + 2\pi n i)}{x(\log(x) + 2\pi n i)}m(1/x)$$
+$$m(x) = \epsilon\frac{-1/x}{x}m(1/x)$$
+$$m(x) = -\epsilon\frac{1}{x^2}m(1/x)$$
+$$m(1/x) = -\epsilon x^2m(x)$$
+
+
+AMAZING!!!
+
+For which x, now we have put $m = -n$:
+
+$$\log(x) = \alpha\frac{-(n + m) \pm \sqrt{(n - m)^2 + \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{-(n + -n) \pm \sqrt{(n - -n)^2 + \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{\pm \sqrt{(2n)^2 + \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{\pm 2\sqrt{n^2 + \frac{1}{N}}}{2}$$
+$$ = \pm \alpha\sqrt{n^2 + \frac{1}{N}}$$
+$$ = \pm 2\pi i\sqrt{n^2 + \frac{1}{N}}$$
+$$x = \exp(\pm 2\pi i\sqrt{n^2 + \frac{1}{N}})$$
+
+
+AMAZING!!!! COUNTABLY MANY POINTS WHERE FE HOLDS!!!!
+
+We have tested these experimentally. They indeed do map to their own inverse.
+
+Are there any collisions:
+$$\exp(\pm 2\pi i\sqrt{n^2 + \frac{1}{N}}) = \exp(\pm 2\pi i\sqrt{m^2 + \frac{1}{N}})$$
+$$\pm 2\pi i\sqrt{n^2 + \frac{1}{N}} = 2\pi i\sqrt{m^2 + \frac{1}{N}} + 2\pi i k$$
+$$\pm \sqrt{n^2 + \frac{1}{N}} = \sqrt{m^2 + \frac{1}{N}} + 2\pi i k$$
+$$n^2 + \frac{1}{N} = (\sqrt{m^2 + \frac{1}{N}} + 2\pi i k)^2$$
+$$n^2 - \frac{1}{N} = m^2 + \frac{1}{N} + 4\pi i k\sqrt{m^2 + \frac{1}{N}} + -4\pi^2k^2$$
+$$n^2 - m^2 = 4\pi i k\sqrt{m^2 + \frac{1}{N}} + -4\pi^2k^2$$
+We need LHS to be an integer!
+$$4\pi i k\sqrt{m^2 + \frac{1}{N}} - 4\pi^2k^2 \in \Z$$
+We see that $m$ and $N$ are always integers, so that part will always be imaginary. No collisions! Except k = 0: Then we get:
+$$n^2 - m^2 = 0$$
+Which implies $n = m$, not possible.
+
+\subsection{Extrapolation to whole complex plane}
+
+These points get closer and closer to 1, and by the identity theorem, the identity thus holds for the entire plane:
+
+$$m(1/x) = -\epsilon x^2 m(x)$$
+
+
+\subsection{An FE for the factor}
+
+We have $f(1/x) = 1/f(x)$. We set $x_1 = 1/x$ and $x_2 = 1/f(x)$. This gives:
+$$m(1/x) = \epsilon\frac{1/f(x)\log(1/f(x))}{1/x\log(1/x)}m(1/f(x))$$
+$$m(1/x) = \epsilon\frac{-x\log(f(x))}{-f(x)\log(x)}m(1/f(x))$$
+$$m(1/x) = \epsilon\frac{x\log(f(x))}{f(x)\log(x)}m(1/f(x))$$
+We also have:
+$$m(x) = \epsilon\frac{f(x)\log(f(x))}{x\log(x)} m(f(x))$$
+We divide:
+$$\frac{m(1/x)}{m(x)} = \frac{\epsilon\frac{x\log(f(x))}{f(x)\log(x)}m(1/f(x))}{\epsilon\frac{f(x)\log(f(x))}{x\log(x)} m(f(x))}$$
+$$\frac{m(1/x)}{m(x)} = \frac{\frac{x}{f(x)}m(1/f(x))}{\frac{f(x)}{x} m(f(x))}$$
+$$\frac{m(1/x)}{m(x)} = \frac{x^2}{f(x)^2} \frac{m(1/f(x))}{m(f(x))}$$
+Suppose $m(1/x) = g(x)m(x)$. We input this:
+$$\frac{g(x)m(x)}{m(x)} = \frac{x^2}{f(x)^2} \frac{g(f(x))m(f(x))}{m(f(x))}$$
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+We have a functional equation for $g$! Let's see if $g(x) = Cx^2$ works!
+$$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
+$$Cx^2 = \frac{x^2}{f(x)^2} Cf(x)^2$$
+This works perfectly!!
 
 \section{Ramblings}
 
@@ -1206,22 +1422,22 @@ $$\exp(\frac{4\pi^2}{N}\log(x)^{-1}) = 1/x$$
 $$\frac{4\pi^2}{N}(\log(x) + 2\pi mi)^{-1} = \log(1/x) + 2\pi ni$$
 $$\frac{4\pi^2}{N}(\log(x) + 2\pi mi)^{-1} = -(\log(x) + 2\pi ni)$$
 $$-\frac{4\pi^2}{N} = (\log(x) + 2\pi mi)(\log(x) + 2\pi ni)$$
-$$\frac{4\pi^2}{N} = (\log(x)^2 + (2\pi ni + 2\pi mi)\log(x) + 2\pi ni2\pi mi)$$
-$$\frac{4\pi^2}{N} = \log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2nm$$
-$$\log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2nm - \frac{4\pi^2}{N} = 0$$
-$$\log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2(nm + \frac{1}{N}) = 0$$
+$$-\frac{4\pi^2}{N} = (\log(x)^2 + (2\pi ni + 2\pi mi)\log(x) + 2\pi ni2\pi mi)$$
+$$-\frac{4\pi^2}{N} = \log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2nm$$
+$$\log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2nm + \frac{4\pi^2}{N} = 0$$
+$$\log(x)^2 + 2\pi i(n + m)\log(x) - 4\pi^2(nm - \frac{1}{N}) = 0$$
 Let $\alpha = 2\pi i$
-$$\log(x)^2 + \alpha(n + m)\log(x) + \alpha^2(nm + \frac{1}{N}) = 0$$
+$$\log(x)^2 + \alpha(n + m)\log(x) + \alpha^2(nm - \frac{1}{N}) = 0$$
 We use abc-formula:
 $$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
 We see $a = 1$ and $b = \alpha(n + m)$ and $c = \alpha^2(nm + \frac{1}{N})$
 We input this:
-$$\frac{-\alpha(n + m) \pm \sqrt{(\alpha(n + m))^2 - 4\alpha^2(nm + \frac{1}{N})}}{2}$$
-$$\frac{-\alpha(n + m) \pm \sqrt{\alpha^2(n + m)^2 - 4\alpha^2(nm + \frac{1}{N})}}{2}$$
-$$\frac{-\alpha(n + m) \pm \alpha\sqrt{(n + m)^2 - 4(nm + \frac{1}{N})}}{2}$$
-$$\alpha\frac{-(n + m) \pm \sqrt{n^2 + 2nm + m^2 - 4(nm + \frac{1}{N})}}{2}$$
-$$\alpha\frac{-(n + m) \pm \sqrt{n^2 - 2nm + m^2 - \frac{4}{N}}}{2}$$
-$$\alpha\frac{-(n + m) \pm \sqrt{(n - m)^2 - \frac{4}{N}}}{2}$$
+$$\frac{-\alpha(n + m) \pm \sqrt{(\alpha(n + m))^2 - 4\alpha^2(nm - \frac{1}{N})}}{2}$$
+$$\frac{-\alpha(n + m) \pm \sqrt{\alpha^2(n + m)^2 - 4\alpha^2(nm - \frac{1}{N})}}{2}$$
+$$\frac{-\alpha(n + m) \pm \alpha\sqrt{(n + m)^2 - 4(nm - \frac{1}{N})}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{n^2 + 2nm + m^2 - 4(nm - \frac{1}{N})}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{n^2 - 2nm + m^2 + \frac{4}{N}}}{2}$$
+$$\alpha\frac{-(n + m) \pm \sqrt{(n - m)^2 + \frac{4}{N}}}{2}$$
 
 For these points we have:
 $$m(x_1) = \epsilon\frac{x_2(\log(x_2) + 2\pi m i)}{x_1(\log(x_1) + 2\pi n i)}m(x_2)$$
@@ -1241,29 +1457,34 @@ AMAZING!!!
 
 For which x, now we have put $m = -n$:
 
-$$\log(x) = \alpha\frac{-(n + m) \pm \sqrt{(n - m)^2 - \frac{4}{N}}}{2}$$
-$$ = \alpha\frac{-(n + -n) \pm \sqrt{(n - -n)^2 - \frac{4}{N}}}{2}$$
-$$ = \alpha\frac{\pm \sqrt{(2n)^2 - \frac{4}{N}}}{2}$$
-$$ = \alpha\frac{\pm 2\sqrt{n^2 - \frac{1}{N}}}{2}$$
-$$ = \pm \alpha\sqrt{n^2 - \frac{1}{N}}$$
-$$ = \pm 2\pi i\sqrt{n^2 - \frac{1}{N}}$$
-$$x = \exp(\pm 2\pi i\sqrt{n^2 - \frac{1}{N}})$$
+$$\log(x) = \alpha\frac{-(n + m) \pm \sqrt{(n - m)^2 + \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{-(n + -n) \pm \sqrt{(n - -n)^2 + \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{\pm \sqrt{(2n)^2 + \frac{4}{N}}}{2}$$
+$$ = \alpha\frac{\pm 2\sqrt{n^2 + \frac{1}{N}}}{2}$$
+$$ = \pm \alpha\sqrt{n^2 + \frac{1}{N}}$$
+$$ = \pm 2\pi i\sqrt{n^2 + \frac{1}{N}}$$
+$$x = \exp(\pm 2\pi i\sqrt{n^2 + \frac{1}{N}})$$
 
 
 AMAZING!!!! COUNTABLY MANY POINTS WHERE FE HOLDS!!!!
 
 Are there any collisions:
-$$\exp(\pm 2\pi i\sqrt{n^2 - \frac{1}{N}}) = \exp(\pm 2\pi i\sqrt{m^2 - \frac{1}{N}})$$
-$$\pm 2\pi i\sqrt{n^2 - \frac{1}{N}} = 2\pi i\sqrt{m^2 - \frac{1}{N}} + 2\pi i k$$
-$$\pm \sqrt{n^2 - \frac{1}{N}} = \sqrt{m^2 - \frac{1}{N}} + 2\pi i k$$
-$$n^2 - \frac{1}{N} = (\sqrt{m^2 - \frac{1}{N}} + 2\pi i k)^2$$
-$$n^2 - \frac{1}{N} = m^2 - \frac{1}{N} + 4\pi i k\sqrt{m^2 - \frac{1}{N}} + -4\pi^2k^2$$
-$$n^2 - m^2 = 4\pi i k\sqrt{m^2 - \frac{1}{N}} + -4\pi^2k^2$$
+$$\exp(\pm 2\pi i\sqrt{n^2 + \frac{1}{N}}) = \exp(\pm 2\pi i\sqrt{m^2 + \frac{1}{N}})$$
+$$\pm 2\pi i\sqrt{n^2 + \frac{1}{N}} = 2\pi i\sqrt{m^2 + \frac{1}{N}} + 2\pi i k$$
+$$\pm \sqrt{n^2 + \frac{1}{N}} = \sqrt{m^2 + \frac{1}{N}} + 2\pi i k$$
+$$n^2 + \frac{1}{N} = (\sqrt{m^2 + \frac{1}{N}} + 2\pi i k)^2$$
+$$n^2 - \frac{1}{N} = m^2 + \frac{1}{N} + 4\pi i k\sqrt{m^2 + \frac{1}{N}} + -4\pi^2k^2$$
+$$n^2 - m^2 = 4\pi i k\sqrt{m^2 + \frac{1}{N}} + -4\pi^2k^2$$
 We need LHS to be an integer!
-$$4\pi i k\sqrt{m^2 - \frac{1}{N}} - 4\pi^2k^2 \in \Z$$
-We see that $m$ and $n$ are always integers, so that part will always be imaginary. No collisions! Except k = 0: Then we get:
+$$4\pi i k\sqrt{m^2 + \frac{1}{N}} - 4\pi^2k^2 \in \Z$$
+We see that $m$ and $N$ are always integers, so that part will always be imaginary. No collisions! Except k = 0: Then we get:
 $$n^2 - m^2 = 0$$
 Which implies $n = m$, not possible.
+
+
+\subsubsection{EXTREMELY IMPORTANT INTERMISSION}
+
+This is sufficient to prove the FE for all points, becuase it is a converging sequence.
 
 
 \subsection{Rambling50}
@@ -1379,6 +1600,9 @@ $$g(x)m(x)^2 = \frac{\log(f(x))^2}{\log(x)^2}g(f(x))m(f(x))^2$$
 
 
 
+\subsection{Rambling53}
+$$x = \exp(\pm 2\pi i\sqrt{n^2 - \frac{1}{N}})$$
+These should be of the form $f(x) = x$. Here $f$ is the mystery transform. Look at the argument for $f(x) = 1/x$, this is the same, just a minus sign different. For $\epsilon = -1$ this should be a zero!
 
 \section{Zeroes}
 
@@ -1386,6 +1610,10 @@ $$g(x)m(x)^2 = \frac{\log(f(x))^2}{\log(x)^2}g(f(x))m(f(x))^2$$
 
 We have $m(E(N))$ and $m(-E(4N))$ both $0$ for rank 1 and 3
 We have $M(E(N))$ and $M(-E(4N))$ both $0$ for rank 2 and 4
+
+
+$$x = \exp(\pm 2\pi i\sqrt{n^2 - \frac{1}{N}})$$
+These should be of the form $f(x) = x$. Here $f$ is the mystery transform. Look at the argument for $f(x) = 1/x$, this is the same, just a minus sign different. For $\epsilon = -1$ this should be a zero!
 
 \subsection{289.a1}
 
