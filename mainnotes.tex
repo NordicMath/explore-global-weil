@@ -295,7 +295,7 @@ When $w = 1$, this implies:
 $$\int_{-\infty}^{\infty} \Lambda(1 + ui) du = 0$$
 Which again means: 
 $$f(E(N)) = e^{-\frac{2\pi}{\sqrt{N}}} m\left(e^{-\frac{2\pi}{\sqrt{N}}}\right) = 0$$
-
+https://arxiv.org/pdf/math/0402135.pdf
 \section{FEs for Elliptic curves}
 
 \subsection{Mellin transform}
@@ -410,7 +410,7 @@ $$ = f(x)^{1/n}$$
 And hence: 
 $$f(x)^n = f(x^{1/n})$$
 This gives importantly for later:
-$$f(x)^-1 = f(x^{1/-1}) = f(x^{-1})$$
+$$f(x)^{-1} = f(x^{1/-1}) = f(x^{-1})$$
 
 \subsection{A second FE on some points}
 We attempt to understand:
@@ -512,6 +512,32 @@ We have a functional equation for $g$! Let's see if $g(x) = Cx^2$ works!
 $$g(x) = \frac{x^2}{f(x)^2} g(f(x))$$
 $$Cx^2 = \frac{x^2}{f(x)^2} Cf(x)^2$$
 This works perfectly!!
+
+
+
+\section{Weird proof of FE}
+Let $C = A \oplus B$. Let $m(1/z; A) = \epsilon z^2 m(z; A)$. Then: 
+
+$$m(z; C) = \sum_{n \ge 1} b_n z^{n - 1} m(z^n; A)$$
+
+Insert $1/z$:
+
+$$m(1/z; C) = \sum_{n \ge 1} b_n 1/z^{n - 1} m(1/z^n; A)$$
+$$m(1/z; C) = \sum_{n \ge 1} b_n z^{1 - n} m(1/(z^n); A)$$
+$$m(1/z; C) = \sum_{n \ge 1} b_n z^{1 - n} \epsilon z^{2n} m(z^n; A)$$
+$$m(1/z; C) = \epsilon \sum_{n \ge 1} b_n z^{1 - n + 2n} m(z^n; A)$$
+$$m(1/z; C) = \epsilon \sum_{n \ge 1} b_n z^{1 + n} m(z^n; A)$$
+$$m(1/z; C) = \epsilon \sum_{n \ge 1} b_n z^2 z^{n - 1} m(z^n; A)$$
+$$m(1/z; C) = \epsilon z^2 \sum_{n \ge 1} b_n z^{n - 1} m(z^n; A)$$ 
+$$m(1/z; C) = \epsilon z^2 m(z; C)$$
+
+What does this mean?!
+
+The only requirement here is that $B$ and $A$ converge for $|x| < 1$.
+
+Choose $A = \chi$ and $B = C - \chi$. Then we get FE for all $C$!
+
+
 
 \section{Ramblings}
 
@@ -1604,9 +1630,207 @@ $$g(x)m(x)^2 = \frac{\log(f(x))^2}{\log(x)^2}g(f(x))m(f(x))^2$$
 $$x = \exp(\pm 2\pi i\sqrt{n^2 - \frac{1}{N}})$$
 These should be of the form $f(x) = x$. Here $f$ is the mystery transform. Look at the argument for $f(x) = 1/x$, this is the same, just a minus sign different. For $\epsilon = -1$ this should be a zero!
 
+
+\subsection{Rambling54}
+
+We see: 
+$$f_z(z_0) = \sum_{n = 1} (z^{n-1}a_n) z_0^{n-1}$$
+$$m(z) = f_z(1)$$
+We use hadamard product:
+$$f_z(z_0) = \frac{1}{2\pi}\int_0^{2\pi} m(\sqrt{z_1}e^{it}) g_z(\sqrt{z_0}e^{-it}) dt$$
+Where:
+$$g_z(z_0) = \sum_{n = 1} z^{n-1} z_0^{n - 1} = \sum_{n = 0} (zz_0)^n = \frac{1}{1 - zz_0}$$
+So:
+$$f_z(z_0) = \frac{1}{2\pi}\int_0^{2\pi} m(\sqrt{z_1}e^{it}) \frac{1}{1 - z\sqrt{z_0}e^{-it}} dt$$
+And:
+$$m(z) = f_z(1) = \frac{1}{2\pi}\int_0^{2\pi} \frac{m(e^{it})}{1 - ze^{-it}} dt$$
+This gives us:
+$$m(0) = 1 = \frac{1}{2\pi}\int_0^{2\pi} m(e^{it}) dt$$
+
+But more importantly, use $m(1/z) = -\epsilon z^2m(z)$:
+$$m(z) = \frac{1}{2\pi}\int_0^{2\pi} \frac{-\epsilon e^{-2it} m(e^{-it})}{1 - ze^{-it}} dt$$
+$$m(z) = \frac{-\epsilon}{2\pi}\int_0^{2\pi} \frac{e^{-2it} m(e^{-it})}{1 - ze^{-it}} dt$$
+
+
+\subsection{Rambling55}
+
+This is simple:
+$$m(1) = L(0)$$
+
+
+\subsection{Rambling56}
+
+We test $f$ on the magic numbers:
+
+$$x = \exp(2\pi i \sqrt{n^2 + 1/N})$$
+
+$$f(x) = \exp(\frac{4\pi^2}{N}\log(x)^{-1})$$
+$$ = \exp(\frac{4\pi^2}{N}\log(\exp(2\pi i \sqrt{n^2 + 1/N}))^{-1})$$
+$$ = \exp(\frac{4\pi^2}{N}(2\pi i \sqrt{n^2 + 1/N})^{-1})$$
+$$ = \exp(-i\frac{2\pi}{N}(\sqrt{n^2 + 1/N})^{-1})$$
+
+
+
+
+\subsection{Rambling57}
+
+We have: 
+$$\Lambda(s) = \epsilon \Lambda(n - s)$$
+
+Define: 
+$$\lambda(x) = \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x))^{-s} \Lambda(s) ds$$
+
+We get:
+$$\lambda(x) = \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x))^{-s} \epsilon \Lambda(n - s) ds$$
+$$ = \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x)^{-1})^{-(n - s)} (-\log(x)^{-1})^{n} \epsilon \Lambda(n - s) ds$$
+$$ = (-\log(x)^{-1})^{n} \epsilon \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x)^{-1})^{-(n - s)} \Lambda(n - s) ds$$
+$$ = (-\log(x)^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x)^{-1})^{-(s + 2c - n)} \Lambda(s + 2c - n) ds$$
+$$ = (-\log(x)^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x)^{-1})^{-s} \Lambda(s) ds$$
+
+Set: 
+$$y = \exp(\log(x)^{-1}) = \hat{x}$$
+We get: 
+$$\lambda(y) = (-\log(y)^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(y)^{-1})^{-s} \Lambda(s) ds$$
+$$ = (-\log(y)^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x))^{-s} \Lambda(s) ds$$
+We divide by the original:
+$$\frac{\lambda(y)}{\lambda(x)} = \frac{(-\log(y)^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x))^{-s} \Lambda(s) ds}{\frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (-\log(x))^{-s} \Lambda(s) ds}$$
+$$\frac{\lambda(y)}{\lambda(x)} = \frac{(-\log(y)^{-1})^{n} \epsilon \frac{-1}{2\pi i}}{\frac{1}{2\pi i}}$$
+$$\frac{\lambda(y)}{\lambda(x)} = -\epsilon(-\log(y)^{-1})^{n}$$
+$$\lambda(y) = -\epsilon(-\log(y)^{-1})^{n}\lambda(x)$$
+$$\lambda(y) = -\epsilon(-\log(x))^{n}\lambda(x)$$
+$$\lambda(\hat{x}) = -\epsilon(-\log(x))^{n}\lambda(x)$$
+$$\lambda(\exp(\log(x)^{-1})) = -\epsilon(-\log(x))^{n}\lambda(x)$$
+Probably also:
+$$\lambda(\exp((\log(x) + 2\pi i n)^{-1})) = -\epsilon(-(\log(x) + 2\pi i n))^{n}\lambda(x)$$
+
+We note that:
+
+$$\frac{1}{\hat{x}} = \hat{\frac{1}{x}}$$
+So if we input this in FE, we get:
+
+$$\lambda(\hat{\frac{1}{x}}) = -\epsilon(-\log(\frac{1}{x}))^{n}\lambda(\frac{1}{x})$$
+$$\lambda(\frac{1}{\hat{x}}) = -\epsilon(\log(x))^{n}\lambda(\frac{1}{x})$$
+We divide by normal FE:
+$$\frac{\lambda(\frac{1}{\hat{x}})}{\lambda(\hat{x})} = \frac{-\epsilon(\log(x))^{n}\lambda(\frac{1}{x})}{-\epsilon(-\log(x))^{n}\lambda(x)}$$
+$$\frac{\lambda(\frac{1}{\hat{x}})}{\lambda(\hat{x})} = (-1)^n \frac{\lambda(\frac{1}{x})}{\lambda(x)}$$
+
+Suppose $\lambda(x^{-1}) = g(x) \lambda(x)$. We get:
+
+$$\frac{g(\hat{x})\lambda(\hat{x})}{\lambda(\hat{x})} = (-1)^n \frac{g(x)\lambda(x)}{\lambda(x)}$$
+$$g(\hat{x}) = (-1)^n g(x)$$
+Interresting!
+
+We look for: 
+$$\exp(\log(x)^{-1}) = x^{-1}$$
+$$\log(x)^{-1} = \log(x^{-1})$$
+$$\log(x)^{-1} = -\log(x)$$
+$$1 = -\log(x)^2$$
+$$\log(x)^2 = -1$$
+$$\log(x) = \pm i$$
+$$x = \exp(\pm i)$$
+
+
+Here we get:
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{n}\lambda(x)$$
+$$\lambda(x^{-1}) = -\epsilon(-\pm i)^{n}\lambda(x)$$
+$$\lambda(x^{-1}) = (\mp 1)^{n}\epsilon\lambda(x)$$
+
+We look with branches:
+$$\exp(\log(x)^{-1}) = x^{-1}$$
+$$(\log(x) + 2\pi i n)^{-1} = \log(x^{-1}) + 2\pi i m$$
+$$(\log(x) + 2\pi i n)^{-1} = -\log(x) + 2\pi i m$$
+$$(\log(x) + 2\pi i n)(-\log(x) + 2\pi i m) = 1$$
+$$(\log(x) + 2\pi i n)(\log(x) - 2\pi i m) = -1$$
+Select $n = m$
+$$\log(x)^2 - (2\pi i n)^2 = -1$$
+$$\log(x)^2 = (2\pi i n)^2 - 1$$
+$$\log(x) = \pm \sqrt{(2\pi i n)^2 - 1}$$
+$$\log(x) = \pm \sqrt{-4\pi^2 n^2 - 1}$$
+$$\log(x) = \pm i\sqrt{4\pi^2 n^2 + 1}$$
+$$\log(x) = \pm 2\pi i \sqrt{n^2 + \frac{1}{4\pi^2}}$$
+$$x = \exp(\pm 2\pi i \sqrt{n^2 + \frac{1}{4\pi^2}})$$
+Since $n = m$ (understand better!) we get:
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{n}\lambda(x)$$
+This holds for all, since the sequence converges (towards 1). 
+Let $n = 2k + m$ where $m$ is $1$ or $0$. We get:
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{2k + m}\lambda(x)$$
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{m}(\log(x))^{2k}\lambda(x)$$
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{m}(\log(x)^2)^{k}\lambda(x)$$
+
+Note that $\log(\hat{x}) = \log(x)^{-1}$ so we get:
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{m}(\frac{\log(x)}{\log(\hat{x})})^{k}\lambda(x)$$
+
+But $\hat{x} = x^{-1}$, so we get:
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{m}(\frac{\log(x)}{\log(x^{-1})})^{k}\lambda(x)$$
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{m}(\frac{\log(x)}{-\log(x)})^{k}\lambda(x)$$
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{m}(-1)^{k}\lambda(x)$$
+$$\lambda(x^{-1}) = -\epsilon(-\log(x))^{m}(-1)^{k}\lambda(x)$$
+
+
+\subsection{Rambling58}
+
+
+Say: 
+$$x_2 = \exp((\log(x_1) + 2\pi i n)^{-1} + 2\pi i m)$$
+$$x_2 = \exp(\frac{1}{\log(x_1) + 2\pi i n} + 2\pi i m)$$
+$$x_2 = \exp(\frac{(1 + 2\pi i m(\log(x_1) - 2\pi i n))(\log(x_1) - 2\pi i n)}{\log(x_1)^2 - 4\pi^2 n^2})$$
+
+
+\subsection{Rambling59}
+
+Another candidate for m-function: Do bell-inverse of $N_i$, number of solutions to $\mathbb{F}_q \oplus \ldots$
+
+It should just be a big sum of all the alphas and betas
+
+
+\subsection{Rambling60}
+
+
+We have: 
+$$\Lambda(s) = \epsilon \Lambda(n - s)$$
+
+Define: 
+$$\lambda(x) = \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} x^{-s} \Lambda(s) ds$$
+
+We get:
+$$\lambda(x) = \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} x^{-s} \epsilon \Lambda(n - s) ds$$
+$$ = \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (x^{-1})^{-(n - s)} (x^{-1})^{n} \epsilon \Lambda(n - s) ds$$
+$$ = (x^{-1})^{n} \epsilon \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (x^{-1})^{-(n - s)} \Lambda(n - s) ds$$
+$$ = (x^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (x^{-1})^{-(s + 2c - n)} \Lambda(s + 2c - n) ds$$
+$$ = (x^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (x^{-1})^{-s} \Lambda(s) ds$$
+
+Set:
+$$y = x^{-1}$$
+We get: 
+$$\lambda(y) = (y^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} (y^{-1})^{-s} \Lambda(s) ds$$
+$$ = (y^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} x^{-s} \Lambda(s) ds$$
+We divide by the original:
+$$\frac{\lambda(y)}{\lambda(x)} = \frac{(y^{-1})^{n} \epsilon \frac{-1}{2\pi i} \int_{c - i\infty}^{c + i\infty} x^{-s} \Lambda(s) ds}{\frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} x^{-s} \Lambda(s) ds}$$
+$$\frac{\lambda(y)}{\lambda(x)} = \frac{(y^{-1})^{n} \epsilon \frac{-1}{2\pi i}}{\frac{1}{2\pi i}}$$
+$$\frac{\lambda(y)}{\lambda(x)} = -(y^{-1})^{n} \epsilon$$
+$$\frac{\lambda(y)}{\lambda(x)} = -\epsilon x^{n}$$
+$$\lambda(y) = -\epsilon x^{n} \lambda(x)$$
+$$\lambda(x^{-1}) = -\epsilon x^{n} \lambda(x)$$
+
+Awesome! We use definition:
+
+$$\lambda(x) = \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} x^{-s} \Lambda(s) ds$$
+
+We have: 
+$$\Lambda(s) = N^{s/2} \gamma(s) L(s)$$
+$$\Lambda(s) = N^{s/2} \gamma(s) \sum_{n = 1}^{\infty} a_n n^{-s}$$
+
+We set in:
+
+$$\lambda(x) = \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} x^{-s} N^{s/2} \gamma(s) \sum_{n = 1}^{\infty} a_n n^{-s} ds$$
+$$\lambda(x) = \sum_{n = 1}^{\infty} a_n \frac{1}{2\pi i} \int_{c - i\infty}^{c + i\infty} x^{-s} N^{s/2} \gamma(s) n^{-s} ds$$
+
+
 \section{Zeroes}
 
 \subsection{General zeroes}
+
+We should also have $m(1) = 0$ because of the L-function, when rank > 0. Else I don't know.
 
 We have $m(E(N))$ and $m(-E(4N))$ both $0$ for rank 1 and 3
 We have $M(E(N))$ and $M(-E(4N))$ both $0$ for rank 2 and 4
@@ -1621,6 +1845,12 @@ We have:
 $$-0.369432727353547 + 0.596322024707197*I$$
 $$0.616384201765624 + 0.470940855106117*I$$
 Both with conjugates.
+Via $f$ this gives us:
+$$0.991209861101128 - 0.0460806314093011*I$$
+$$0.940129109439608 - 0.127772336826880*I$$
+As other potential zeroes.
+
+
 
 \section{Ideas}
 
@@ -1653,6 +1883,11 @@ Both with conjugates.
   \item Look at 2pi branches of our transform
   \item Use various FEs to tease out main FE
   \item Our L FE has f(1/x) = 1/f(x) use this!
+  \item Elliptic curve twisted by Dirichlet character
+  \item Find FE for number theoretic functions, get diversity of different FE's 
+  \item q-analogue of m-function https://arxiv.org/pdf/math/0402135.pdf
+  \item Use Hecke operators for m-functions
+  \item Are Hecke operators lambda ring? Psi structure? https://math.mit.edu/classes/18.783/2015/LectureNotes25.pdf
 
 \end{enumerate}
 
